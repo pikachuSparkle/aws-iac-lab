@@ -1,2 +1,2 @@
 # aws-iac-tutorials
-aws-iac-tutorials
+obsidian to read
