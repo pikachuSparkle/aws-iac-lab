@@ -1,0 +1,194 @@
+{
+  "main": {
+    "id": "a29f2d4b50ed3467",
+    "type": "split",
+    "children": [
+      {
+        "id": "11131077dec2fe9f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f247163190d21c01",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "39028e4e7eb1d4e9",
+    "type": "split",
+    "children": [
+      {
+        "id": "774da9b84c1c1e8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7c7f771e20c20af6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b6a2f62d2eb6808c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "e4affeab7666cb5b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 597.5
+  },
+  "right": {
+    "id": "ad99fd2f88252b22",
+    "type": "split",
+    "children": [
+      {
+        "id": "a2b7aab1bc1dd18e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "472c4c51c1a0fd80",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for README"
+            }
+          },
+          {
+            "id": "9a5d11c3100cea18",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from README"
+            }
+          },
+          {
+            "id": "c0adf249e4beae4e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8d25d0709b816308",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "f247163190d21c01",
+  "lastOpenFiles": [
+    "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 3. application deploy - apache2.md",
+    "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 4. variables.md",
+    "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 2. create vpc.md",
+    "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 1. create instance.md",
+    "aws-iac-tutorials/AWS - Terraform - tutorials - 0 - Terraform demo 调整 instance 的 group policy.md",
+    "aws-iac-tutorials/AWS - Terraform - tutorials - 0 - install && demo.md",
+    "aws-iac-tutorials/AWS - Terraform - EKS - Istio - 3. Enhancing Network Resilience with Istio on Amazon EKS (pending).md",
+    "aws-iac-tutorials/AWS - Terraform - EKS - Istio - 2. Using Istio Traffic Management on Amazon EKS to Enhance User Experience.md",
+    "aws-iac-tutorials/AWS - Terraform - EKS - Istio - 1. Getting Started with Istio on Amazon EKS.md",
+    "aws-iac-tutorials/AWS - Terraform - EC2 - 部署 K3S+Rancher+K8S.md",
+    "aws-iac-tutorials/AWS - EKS - Rancher Deployment with Ingress-nginx.md",
+    "aws-iac-tutorials/AWS - EKS - Rancher Deployment with ALB Ingress.md",
+    "aws-iac-tutorials/AWS - EKS - Prometheus & Grafana.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Prometheus Stack Deploy on EKS.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Percona Operator for PostgreSQL 2.4.1.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Percona Operator for MySQL based on Percona XtraDB Cluster.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Percona Operator for MongoDB Deploy.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - failed Demo with MongoDB Cummunity Operator.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - ECK - solve elasticsearch certificate expiry problem.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - ECK - elasticsearch & kibana quickstart deployment.md",
+    "aws-iac-tutorials/AWS - EKS - Minio Basic Deployment (pending).md",
+    "aws-iac-tutorials/AWS - EKS - Jenkins CICD Deployment on EKS.md",
+    "aws-iac-tutorials/AWS - EKS - Ingress Controller - Ingress-nginx.md",
+    "aws-iac-tutorials/AWS - EKS - Ingress Controller - ALB & Argocd.md",
+    "aws-iac-tutorials/AWS - EKS - EKS Cluster Deployment with EKSCTL.md",
+    "aws-iac-tutorials/AWS - Concept - VPC.md"
+  ]
+}
