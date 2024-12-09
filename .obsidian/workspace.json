@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b816c7131e493005",
+        "id": "9e03b8be79c05459",
         "type": "tabs",
         "children": [
           {
-            "id": "53955f75a59d8249",
+            "id": "15a6f0b45a369af8",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -154,8 +154,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "53955f75a59d8249",
+  "active": "15a6f0b45a369af8",
   "lastOpenFiles": [
+    "aws-iac-tutorials/AWS - EC2 - RKE2 - 0 - Cluster Deployment.md",
+    "aws-iac-tutorials/AWS - EC2 - RKE2 - 1 - Server Node Installation.md",
+    "aws-iac-tutorials/AWS - EC2 - RKE2 - 2 - Agent (Worker) Node Installation.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - A Failed Demo with MongoDB Cummunity Operator.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - ECK - elasticsearch & kibana quickstart deployment.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - ECK - solve elasticsearch certificate expiry problem.md",
+    "aws-iac-tutorials/AWS - EC2 - Kubeadmin - Deploy K8S Cluster.md",
     "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 3. application deploy - apache2.md",
     "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 4. variables.md",
     "aws-iac-tutorials/AWS - Terraform - tutorials - Offical - 1 - Terraform EC2's security group policy configuration.md",
@@ -163,7 +170,6 @@
     "aws-iac-tutorials/AWS - EKS - Ingress Controller - Ingress-nginx.md",
     "aws-iac-tutorials/AWS - EKS - Ingress Controller - ALB & Argocd.md",
     "aws-iac-tutorials/AWS - EKS - EKS Cluster Deployment with EKSCTL.md",
-    "aws-iac-tutorials/AWS - EKS - aws-ebs-csi-driver Installation.md",
-    "aws-iac-tutorials/AWS - EC2 - Kubeadmin Deploy K8S Cluster.md"
+    "aws-iac-tutorials/AWS - EKS - aws-ebs-csi-driver Installation.md"
   ]
 }
