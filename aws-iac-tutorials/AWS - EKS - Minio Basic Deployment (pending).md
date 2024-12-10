@@ -1,10 +1,10 @@
 ## 1. Deploy EKS Cluster
 
-[[AWS - EKS - EKS Cluster Deployment with EKSCTL]]
+[[AWS - EKS - EKS Cluster Deployment with eksctl]]
 
 ## 2. Deploy aws-ebs-csi-driver
 
-[[AWS - EKS - aws-ebs-csi-driver Installation]]
+[[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ## 3. Install the MinIO Operator using Kustomize[^r1]
 

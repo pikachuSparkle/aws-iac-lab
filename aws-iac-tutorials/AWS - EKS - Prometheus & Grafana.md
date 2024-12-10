@@ -8,7 +8,7 @@ https://dev.to/aws-builders/monitoring-eks-cluster-with-prometheus-and-grafana-1
 
 ## 1. 先部署 aws-ebs-driver-driver
 
-[[AWS - EKS - aws-ebs-csi-driver Installation]]
+[[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ## 2. 部署 Prometheus 服务 
 

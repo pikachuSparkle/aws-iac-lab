@@ -7,12 +7,12 @@ This guide shows you how to deploy Percona Operator for PostgreSQL on Amazon Ela
 
 ## 1.  Create the EKS cluster
 
-[[AWS - EKS - EKS Cluster Deployment with EKSCTL]]
+[[AWS - EKS - EKS Cluster Deployment with eksctl]]
 
 In this Demo, we will need 1 working nodes (node type: t3a.medium).
 ## 2.  install the Amazon EBS CSI driver
 
-[[AWS - EKS - aws-ebs-csi-driver Installation]]
+[[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ```
 export AWS_REGION=us-east-1 
