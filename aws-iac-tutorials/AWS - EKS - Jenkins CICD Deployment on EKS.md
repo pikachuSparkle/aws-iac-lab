@@ -3,9 +3,9 @@ https://vocus.cc/article/65b74e54fd89780001fb1221
 
 ## 1.  Create the EKS cluster & Amazon EBS CSI driver
 
-[[AWS - EKS - EKS Cluster Deployment with EKSCTL]]
+[[AWS - EKS - EKS Cluster Deployment with eksctl]]
 
-[[AWS - EKS - aws-ebs-csi-driver Installation]]
+[[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ## 2. Jenkins Master Deploy
 

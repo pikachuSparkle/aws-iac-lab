@@ -32,7 +32,7 @@ in this scenario, using the most simple tools locap-path provisioner and ingress
 
 
 Setup Cluster
-[[AWS - EKS - EKS Cluster Deployment with EKSCTL]]
+[[AWS - EKS - EKS Cluster Deployment with eksctl]]
 
 Install [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
 ```

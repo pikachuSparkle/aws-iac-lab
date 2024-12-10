@@ -24,7 +24,7 @@ Solutions that we have reviewed are:
 
 ## 2. Install aws-ebs-csi-driver
 
-[[AWS - EKS - aws-ebs-csi-driver Installation]]
+[[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ```
 export AWS_REGION=us-east-1

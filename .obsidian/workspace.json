@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9e03b8be79c05459",
+        "id": "b9e74950f50a4c0d",
         "type": "tabs",
         "children": [
           {
-            "id": "15a6f0b45a369af8",
+            "id": "0c6faf635566221a",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -154,22 +154,33 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "15a6f0b45a369af8",
+  "active": "1e1de069f8b8676e",
   "lastOpenFiles": [
-    "aws-iac-tutorials/AWS - EC2 - RKE2 - 0 - Cluster Deployment.md",
-    "aws-iac-tutorials/AWS - EC2 - RKE2 - 1 - Server Node Installation.md",
-    "aws-iac-tutorials/AWS - EC2 - RKE2 - 2 - Agent (Worker) Node Installation.md",
-    "aws-iac-tutorials/AWS - EKS - Operator - A Failed Demo with MongoDB Cummunity Operator.md",
-    "aws-iac-tutorials/AWS - EKS - Operator - ECK - elasticsearch & kibana quickstart deployment.md",
-    "aws-iac-tutorials/AWS - EKS - Operator - ECK - solve elasticsearch certificate expiry problem.md",
-    "aws-iac-tutorials/AWS - EC2 - Kubeadmin - Deploy K8S Cluster.md",
-    "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 3. application deploy - apache2.md",
-    "aws-iac-tutorials/AWS - Terraform - tutorials - 1 - 4. variables.md",
-    "aws-iac-tutorials/AWS - Terraform - tutorials - Offical - 1 - Terraform EC2's security group policy configuration.md",
-    "aws-iac-tutorials/AWS - EKS - Jenkins CICD Deployment on EKS.md",
-    "aws-iac-tutorials/AWS - EKS - Ingress Controller - Ingress-nginx.md",
+    "aws-iac-tutorials/AWS - EKS - EKS Cluster Deployment with eksctl.md",
     "aws-iac-tutorials/AWS - EKS - Ingress Controller - ALB & Argocd.md",
-    "aws-iac-tutorials/AWS - EKS - EKS Cluster Deployment with EKSCTL.md",
-    "aws-iac-tutorials/AWS - EKS - aws-ebs-csi-driver Installation.md"
+    "aws-iac-tutorials/AWS - EKS - Ingress Controller - Ingress-nginx.md",
+    "aws-iac-tutorials/AWS - EKS - Jenkins CICD Deployment on EKS.md",
+    "aws-iac-tutorials/AWS - EC2 - RKE2 - 2 - Agent (Worker) Node Installation.md",
+    "aws-iac-tutorials/AWS - EC2 - RKE2 - 1 - Server Node Installation.md",
+    "aws-iac-tutorials/AWS - EC2 - RKE2 - 0 - Cluster Deployment.md",
+    "aws-iac-tutorials/AWS - EC2 - Kubeadmin - Deploy K8S Cluster.md",
+    "aws-iac-tutorials/AWS - Concepts - VPC.md",
+    "aws-iac-tutorials/AWS - Concepts - S3.md",
+    "aws-iac-tutorials/AWS - Concepts - NAT Gateway.md",
+    "aws-iac-tutorials/AWS - Concepts - EBS.md",
+    "aws-iac-tutorials/AWS - EKS - Rancher Deployment with Ingress-nginx.md",
+    "aws-iac-tutorials/AWS - EKS - Rancher Deployment with ALB Ingress.md",
+    "aws-iac-tutorials/AWS - EKS - StorageClass - aws-ebs-csi-driver Installation.md",
+    "aws-iac-tutorials/AWS - Terraform - EC2 - Deploy K3S+Rancher+K8S.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - ECK - solve elasticsearch certificate expiry problem.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - ECK - elasticsearch & kibana quickstart deployment.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - A Failed Demo with MongoDB Cummunity Operator.md",
+    "aws-iac-tutorials/AWS - EKS - Minio Basic Deployment (pending).md",
+    "aws-iac-tutorials/AWS - EKS - Prometheus & Grafana.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Prometheus Stack Deploy on EKS.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Percona Operator for PostgreSQL 2.4.1.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Percona Operator for MySQL based on Percona XtraDB Cluster.md",
+    "aws-iac-tutorials/AWS - Terraform - EKS - Istio - 1. Getting Started with Istio on Amazon EKS.md",
+    "aws-iac-tutorials/AWS - EKS - Operator - Percona Operator for MongoDB Deploy.md"
   ]
 }

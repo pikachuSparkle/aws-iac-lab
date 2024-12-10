@@ -17,12 +17,12 @@ In this artical, we use  `Percona Operator for MySQL based on Percona XtraDB Clu
 
 ## 1.  Create the EKS cluster
 
-[[AWS - EKS - EKS Cluster Deployment with EKSCTL]]
+[[AWS - EKS - EKS Cluster Deployment with eksctl]]
 
 In this Demo, we will need 4 working nodes (node type: t3a.medium).
 ## 2.  install the Amazon EBS CSI driver
 
-[[AWS - EKS - aws-ebs-csi-driver Installation]]
+[[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ```
 export AWS_REGION=us-east-1 

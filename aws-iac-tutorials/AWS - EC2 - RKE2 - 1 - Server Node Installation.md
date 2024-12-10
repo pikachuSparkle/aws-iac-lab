@@ -1,14 +1,16 @@
-### 环境
-ubuntu 22.04
-AWS EC2 2C4G12G
+### Prerequisites
+- AWS EC2 2C4G12G
+- Ubuntu 22.04
+
 
 ### Server Node Installation
 
-#### 1. Run the installer
+#### 1. Running the installer
 ```
 curl -sfL https://get.rke2.io | sh -
 ```
-This will install the `rke2-server` service and the `rke2` binary onto your machine. Due to its nature, It will fail unless it runs as the root user or through `sudo`.
+This prosure will install the `rke2-server` service and the `rke2` binary onto your machine. 
+Due to its nature, It will fail unless it runs as the root user or through `sudo`.
 
 #### 2. Enable the rke2-server service 
 ```
@@ -20,13 +22,12 @@ systemctl enable rke2-server.service
 systemctl start rke2-server.service
 ```
 
-#### 4. Follow the logs, if you like
+#### 4. Following the logs, if you like
 ```
 journalctl -u rke2-server -f
 ```
 
 After running this installation:
-
 - The `rke2-server` service will be installed. The `rke2-server` service will be configured to automatically restart after node reboots or if the process crashes or is killed.
 - Additional utilities will be installed at `/var/lib/rancher/rke2/bin/`. They include: `kubectl`, `crictl`, and `ctr`. Note that these are not on your path by default.
 - Two cleanup scripts, `rke2-killall.sh` and `rke2-uninstall.sh`, will be installed to the path at:

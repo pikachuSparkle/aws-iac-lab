@@ -1,19 +1,19 @@
 
 ## 0. References
-https://docs.rke2.io/install/quickstart
+[RKE2 DOCS](https://docs.rke2.io/install/quickstart)
 
 ## 1. Server Node Installation
 
 [[AWS - EC2 - RKE2 - 1 - Server Node Installation]]
 
 ---
-NOTES-1：
+NOTES 1：
 kubectl 默认$HOME/.kube/config，建议软连接
 - 可以直接创建软连接`ln -s /etc/rancher/rke2/rke2.yaml $HOME/.kube/config`
 - 也可以创建环境变量`export KUBECONFIG=/etc/rancher/rke2/rke2.yaml` 
 
 ---
-NPTES-2：
+NPTES 2：
 在~/.profile里面增加
 ```
 PATH=/var/lib/rancher/rke2/bin:$PATH
