@@ -122,7 +122,7 @@ ingressClassName: alb
 ```
 
 ```
-#得有自己的域名
+# Use your own domain name
 host: argocd.example.com
 ```
 
@@ -147,7 +147,7 @@ host: argocd.example.com
 kubectl apply -f argocd-ingress.yaml
 ```
 
-#### 4.5 验证
+#### 4.5 Validate
 
 ```
 kubectl get ingress -n argocd
@@ -162,7 +162,7 @@ argocd   alb     argocd.example.com   k8s-argocd-argocd-68ee239fcb-701787668.us-
 - provision->active
 - targetgroup状态healthy
 
-#### 4.6 DNS配置
+#### 4.6 DNS Configuration
 在DNS配置环境，需要做CNAME配置
 ```
 NAME: hostname.example.com   
@@ -172,7 +172,7 @@ CNAME VALUE:  k8s-argocd-argocd-68ee239fcb-701787668.us-east-1.elb.amazonaws.com
 #### 4.7 访问
 
 URL：
-https://argocd.example.com
+`https://argocd.example.com`
 
 Login：
 ```
@@ -184,4 +184,4 @@ kubectl -n argocd get secret argocd-initial-admin-secret \
           -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
-argocd的UI界面访问成功！完成！
+The Argo CD UI interface has been successfully accessed! Completed!
