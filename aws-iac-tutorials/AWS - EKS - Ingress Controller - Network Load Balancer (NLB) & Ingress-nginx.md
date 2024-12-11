@@ -1,13 +1,14 @@
 ## DOCS:
-yaml方式
+There are two solutions to deploy ingress-nginx in AWS EKS using NLB.
+1. yaml Approach
 https://kubernetes.github.io/ingress-nginx/deploy/#aws
-helm方式
+2. helm Approach
 https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks
 
 >In AWS, we use a Network load balancer (NLB) to expose the Ingress-Nginx Controller behind a Service of Type=LoadBalancer.
 
 
-## Installation - yaml方式
+## Installation with yaml
 
 注意正常情况下这样就够了，官方为了使用NLB进行tls证书的卸载（terminate），增加了1234步骤
 ```shell
@@ -29,7 +30,7 @@ ingress-nginx-controller   LoadBalancer   10.100.90.18   a904a952c73bf4f668a17c4
 - Ingress-nginx Controller 必须使用secret的方式使用tls证书，不能使用alb那种引用AWS的arn的方式。
 - https://letsencrypt.org/ 通过这个可以申请3个月的免费证书，详见[[Let's Encrypt Certificate Application]]
 
-## Installation - helm方式
+## Installation with helm
 
 ```
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx  

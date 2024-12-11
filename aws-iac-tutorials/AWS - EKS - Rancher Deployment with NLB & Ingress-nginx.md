@@ -9,7 +9,7 @@ https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade
 
 ## 2. Install Ingress-nginx
 
-[[AWS - EKS - Ingress Controller - Ingress-nginx]]
+[[AWS - EKS - Ingress Controller - Network Load Balancer (NLB) & Ingress-nginx]]
 
 ## 3. Install Rancher
 
@@ -55,12 +55,12 @@ kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{
 ```
 >Happy Containering!
 
-## 4. 访问
+## 4. Visit
 
 这时候就可以访问了，配置上DNS，直接访问就可以，不过这时候会给一个连接不安全的报错，但是可以使用。
 
 要修复这个问题，是需要把tls证书添加上。
-证书的准备参考[[Let's Encrypt Certificate Application]]
+证书的准备参考 [[Let's Encrypt Certificate Application]]
 看一下ingress rancher的内容，会发现一个secret的名字是tls-rancher-ingress，这个secret需要创建出来：
 ```
 kubectl create secret tls tls-rancher-ingress --cert=./certificate.pem --key=./private.pem -n cattle-system
