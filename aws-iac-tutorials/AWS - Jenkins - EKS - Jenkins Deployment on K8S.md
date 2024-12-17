@@ -205,7 +205,7 @@ service/jenkins-service   NodePort   10.109.168.87   <none>        8080:32003/TC
 b1a8117e9a364353855ebfe03b3308be
 
 http://nodePublicIP:32003
-admin/P@ssw0rd
+admin/password
 ```
 
 ## 3. Plugins Install
