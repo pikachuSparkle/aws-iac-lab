@@ -104,11 +104,42 @@ Getting Started
 - Scroll down to "Test Connection" and ensure it states "Success". Select **Save** when done
 13. You are now ready to use EC2 instances as Jenkins agents.
 
-## 4. Validate
-这里需要注意选择us-east-1默认的vpc默认的security，保证master与agent能够网络畅通
-要不然会失败
+## 4. Troubleshooting
 
-## 5. Deleting your EC2 instance
+#### 4.1 Built-In Node "Free Swap Space" problem
+https://serverfault.com/questions/798817/jenkins-on-docker-free-swap-space-0
+```
+# Configure a swap file on your host
+sudo dd if=/dev/zero of=swapfile bs=1M count=1K
+sudo mkswap swapfile
+sudo chown root:root swapfile
+sudo chmod 600 swapfile
+sudo swapon swapfile
+```
+
+#### 4.2 Built-In Node "Free Temp Space" problem
+```
+# Configure Monitors
+```
+
+#### 4.3 AMIs in Cloud Configuration
+ADD Configuration in "Cloud" "AMIs"
+```
+AMI ID: ami-01816d07b1128cd2d
+Instance Type: T3aMicro
+Remote user: ec2-user
+Init script:
+sudo dnf install java-17-amazon-corretto -y
+```
+
+NOTES: 
+- The "Jenkins agent" instances will be launched in "us-east-1" "default VPC" "default security group"
+- Guarantee "Jenkins master" will be launched will "Jenkins agent" in one subnet
+
+## 5. Validate
+
+Create a pipeline -> running a "Hello World" demo
+
+## 6. Deleting your EC2 instance
 1. In the left-hand navigation bar of the Amazon EC2 console, select **Instances**.
-    
 2. Right-click on the instance you created earlier, and select **Terminate**.
