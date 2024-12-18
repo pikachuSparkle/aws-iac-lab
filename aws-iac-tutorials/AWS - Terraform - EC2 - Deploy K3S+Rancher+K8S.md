@@ -1,14 +1,12 @@
 
-根据Rancher的documentation，可以通过terraform在AWS上面自动化部署K3S+Rancher+K8S集群
+## Prerequisites:
 
-1、创建2个`t3a.medium`就可以（`t3a.medium`比`t3.medium`便宜10%）
-2、windows不需要创建，其ami编号可以选择一个能返回的就行
+According to Rancher's [DOCS](https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/aws)，you can automate the deployment of K3S -> Rancher -> K8S cluster on AWS using Terraform.
 
-## References：
+- You only need to create 2 `t3a.medium` instances (the `t3a.medium` is 10% cheaper than the `t3.medium`).
+- There is no need to create a Windows instance; you can choose any AMI ID that returns successfully.
 
-https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/aws
-
-## Processes
+## Installation Processes
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using
 ```
@@ -51,6 +49,6 @@ workload_node_ip = yy.yy.yy.yy
 
 9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/aws`.
 
-## Result
+## Validate
 
 Two Kubernetes clusters are deployed into your AWS account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
