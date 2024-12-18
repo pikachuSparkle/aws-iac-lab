@@ -6,9 +6,11 @@ This tutorial walks you through the process of deploying a Jenkins application. 
 references: 
 https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/#jenkins-on-aws
 ## 1. Prerequisites
-- Disk size 40G+
+- Disk size 10G+
 - OS amazon2023
-- 2G2C+
+- 2G2C for master
+- 1G1C for agent
+- Guarantee "Jenkins master" will be launched will "Jenkins agent" in same subnet
 
 ## 2. EC2 Instance Preparation
 #### Creating a key pair
@@ -134,7 +136,7 @@ sudo dnf install java-17-amazon-corretto -y
 
 NOTES: 
 - The "Jenkins agent" instances will be launched in "us-east-1" "default VPC" "default security group"
-- Guarantee "Jenkins master" will be launched will "Jenkins agent" in one subnet
+- Guarantee "Jenkins master" will be launched will "Jenkins agent" in same subnet
 
 ## 5. Validate
 
