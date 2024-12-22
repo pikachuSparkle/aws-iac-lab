@@ -1,21 +1,19 @@
-## 0. DOCS:
+## 1. DOCS:
 
-Deployment on AWS
-主参考
+Istio Installing on AWS
 https://aws.amazon.com/cn/blogs/opensource/getting-started-with-istio-on-amazon-eks/
-辅参考
 https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/istio/
 
 Source Code:
 https://github.com/aws-ia/terraform-aws-eks-blueprints
 https://github.com/aws-samples/istio-on-eks/tree/main/modules/01-getting-started
 
-Conanical K8S deployment
+Istio installing on Conanical K8S deployment 
 https://istio.io/latest/docs/setup/getting-started/
 
-## 1. EKS Cluster setup
+## 2. EKS Cluster setup
 
-Git clone the souece code
+Git clone the source code
 ```
 git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git 
 cd terraform-aws-eks-blueprints/patterns/istio
@@ -43,7 +41,7 @@ do
 done
 ```
 
-## 2. Cluster Destroy and Resource Recovery
+## 3. Cluster Destroy and Resource Recovery
 https://aws-ia.github.io/terraform-aws-eks-blueprints/getting-started/#destroy
 ```yaml
 terraform destroy -target="module.eks_blueprints_addons" -auto-approve
@@ -51,8 +49,9 @@ terraform destroy -target="module.eks" -auto-approve
 terraform destroy -auto-approve
 ```
 
-## 3. Source Reading & Explanation
+## 4. Source Reading & Explanation & Reconfiguration
 
+main.tf
 ```
 provider "aws" {
   region = local.region
@@ -108,9 +107,9 @@ locals {
   }
 }
 
-################################################################################
+##########################################################################
 # Cluster
-################################################################################
+##########################################################################
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
@@ -135,7 +134,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     initial = {
-      instance_types = ["t3.medium"]
+      instance_types = ["t3a.medium"]
 
       min_size     = 1
       max_size     = 2
@@ -286,6 +285,7 @@ module "vpc" {
 
 ```
 
+NOTES:
 - AWS best practices 是 node group部署在private_subnet中，为了访问公网，需要增加一个nat gateway，既保证安全，又可以访问公网。原版的terraform代码就是这样的。
 - 为了省钱，对原有代码进行了修改，node group直接部署在public_subnet中，删除nat gateway。另外压缩node的配置。形成了穷人版代码。
 
@@ -323,7 +323,6 @@ subnet_ids = module.vpc.public_subnets
   single_nat_gateway = false
 ```
 
-
 #### 4.5 About IAM and aws-auth (no changing)
 ```
 # Give the Terraform identity admin access to the cluster
@@ -333,7 +332,7 @@ subnet_ids = module.vpc.public_subnets
 https://repost.aws/zh-Hans/knowledge-center/eks-kubernetes-object-access-error
 授予权限问题
 
-#### 4.6 关于子网，demo中建立了3个privatesubnet, 3个public subnet
+#### 4.6 关于子网，demo中建立了3个`private subnet`, 3个`public subnet`
 
 
 ## 5. Deploying the microservices to Istio Service Mesh
@@ -383,7 +382,8 @@ v2----> `Vendors`: `ABC.com, XYZ.com`
 
 ## 6. Key Istio Components
 
-In this blog and the upcoming series, we will be gradually introducing all of the Istio core components. For this particular blog, we are focusing on two key Istio elements: **Istio Ingress Gateway** and **VirtualService** that are deployed via the Helm chart in the previous step.
+In this article and the upcoming series, we will be gradually introducing all of the Istio core components. For this particular blog, we are focusing on two key Istio elements: 
+**Istio Ingress Gateway** and **VirtualService** that are deployed via the Helm chart in the previous step.
 ```
 kubectl get Gateway,VirtualService -n workshop
 ```
@@ -399,12 +399,11 @@ kubectl get gateway productapp-gateway -n workshop -o yaml
 
 #### VirtualService
 
-A [VirtualService](https://istio.io/latest/docs/concepts/traffic-management/#virtual-services) defines a set of traffic routing rules to apply when a hostname is addressed. Each routing rule defines matching criteria for traffic of a specific protocol. If the traffic is matched, then it is sent to a named destination service (or subset/version of it) defined in the registry. Without virtual services, Envoy distributes traffic using round-robin load balancing between all service instances mapped to the hostname. With a virtual service, you can specify routing rules that tell Envoy how to send the virtual service’s traffic to appropriate destinations.
+ [VirtualService](https://istio.io/latest/docs/concepts/traffic-management/#virtual-services) defines a set of traffic routing rules to apply when a hostname is addressed. Each routing rule defines matching criteria for traffic of a specific protocol. If the traffic is matched, then it is sent to a named destination service (or subset/version of it) defined in the registry. Without virtual services, Envoy distributes traffic using round-robin load balancing between all service instances mapped to the hostname. With a virtual service, you can specify routing rules that tell Envoy how to send the virtual service’s traffic to appropriate destinations.
 
 ```
 kubectl get VirtualService productapp -n workshop -o yaml
 ```
-
 
 Based on this YAML definition of the Gateway, we can conclude that the `productapp` VirtualService :
 
@@ -420,13 +419,13 @@ Now that we have demonstrated how to deploy services into Istio Service Mesh, le
 [Kiali](https://kiali.io/) is a console for Istio service mesh and we will be using Kiali to validate our setup. Kiali should already be available as a deployment in the `istio-system` namespace if you have setup Istio using the [EKS Istio blueprint](https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/istio/) we shared before.
 
 ```
-kubectl port-forward svc/kiali 20001:20001 -n istio-system
+kubectl port-forward svc/kiali 20001:20001 -n istio-system --address 0.0.0.0
 ```
 
 #### Grafana
 
 ```
-kubectl port-forward svc/grafana 3000:3000 -n istio-system
+kubectl port-forward svc/grafana 3000:3000 -n istio-system --address 0.0.0.0
 ```
 
 Use your browser to navigate to `http://localhost:3000/dashboards`
