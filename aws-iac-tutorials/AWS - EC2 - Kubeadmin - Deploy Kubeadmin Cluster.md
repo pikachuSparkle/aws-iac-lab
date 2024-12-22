@@ -1,8 +1,10 @@
 ## 1. Prerequisites:
 
-1. Launch 2 EC2 instances running Ubuntu 22.04 with the following configuration:
-- Instance Type: t3a.medium 
-- Configuration: 2 vCPUs, 4 GiB of memory
+1. Launch 2 EC2 instances running Ubuntu 22.04 with the following configuration: 
+```
+Instance Type: t3a.medium 
+Configuration: 2 vCPUs, 4 GiB of memory
+```
 2. Install Docker on both instances
 3. Install kubeadm, kubelet, and kubectl on both instances
 4. Disable swap on both instances
@@ -12,12 +14,12 @@ sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
 
-The overall instruction is base on offical reference.[^5]
+The overall instruction is base on official reference.[^5]
 ## 2. Install Containerd on Ubuntu
 
 #### 2.1 DOCS:
 
-The following step is based on offical method [Install using the `apt` repository](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+The following step is based on official method [Install using the `apt` repository](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
 Also you can find other methods from the references.[^1][^2][^3][^4]
 
@@ -186,7 +188,7 @@ kubeadm join 10.20.64.12:6443 --token xknwjw.ihv8d7srfk80ms3p \
         --discovery-token-ca-cert-hash sha256:5901c509eaaefd7853951913e99f8e42ece0b98f1eb2a4a30032b7d843af0fb2
 ```
 
-## 7. Deploying ArgoCD as a Demo
+## 7. Deploying ArgoCD as Demo
 
 Install ArgoCD in the default namespace:
 ```shell
@@ -206,7 +208,7 @@ export ARGOCD_SERVER=$(kubectl get service argocd-server -n argocd -o jsonpath='
 export ARGOCD_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 ```
 
-Log in to ArgoCD using the admin username and the password obtained in the previous step.
+Log in ArgoCD dashboard with the admin username and the password obtained in previous steps.
 
 ## References:
 [^5]: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
