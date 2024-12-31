@@ -24,29 +24,33 @@ https://github.com/prometheus-operator/prometheus-operator
 >helm chart
 >The prometheus-community/kube-prometheus-stack helm chart provides a similar feature set to kube-prometheus. This chart is maintained by the Prometheus community. For more information, please see the chart's readme
 
-## 1. Setup Prometheus monitoring on EKS
 
-```
-# Helm Chart Readme
-# https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md
-```
+**NOTES**:
 
-```
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+- `kube-prometheus-stack` is a sub-helm-repository of [prometheus-community/helm-charts](https://github.com/prometheus-community/helm-charts) 
+- DOCS & Helm Readme: https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md
+
+
+## 1. Setup Prometheus monitoring on EKS - [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+
+
+Get Helm Repository Info & Update
+
+```shell
+helm repo add prometheus-community \ 
+https://prometheus-community.github.io/helm-charts
+
 helm repo update
 ```
 
-Now you can run the following command to deploy the chart into a new namespace in your cluster:
+Install Helm Chart
 
-```bash
+```shell
+# helm install [RELEASE_NAME] prometheus-community/kube-prometheus-stack
 helm install kube-prometheus-stack \
   --create-namespace \
   --namespace kube-prometheus-stack \
   prometheus-community/kube-prometheus-stack
-```
-
-```
-# helm install [RELEASE_NAME] prometheus-community/kube-prometheus-stack
 ```
 
 By default this chart installs additional, dependent charts:
@@ -54,7 +58,8 @@ By default this chart installs additional, dependent charts:
 - [prometheus-community/prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter)
 - [grafana/grafana](https://github.com/grafana/helm-charts/tree/main/charts/grafana)
 To disable dependencies during installation, see [multiple releases](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md#multiple-releases) below.
-_See [helm dependency](https://helm.sh/docs/helm/helm_dependency/) for command documentation._
+See [helm dependency](https://helm.sh/docs/helm/helm_dependency/) for command documentation.For kube-prometheus-stack, you can get dependencies from [kube-prometheus-stack/Chart.yaml](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/Chart.yaml)
+
 
 ```bash
 kubectl -n kube-prometheus-stack get pods
@@ -69,6 +74,7 @@ prometheus-kube-prometheus-stack-prometheus-0          2/2   Running 0    83s
 
 uninstall the release 
 ```
+# helm uninstall [RELEASE_NAME]
 helm uninstall kube-prometheus-stack -n kube-prometheus-stack  
 ```
 
@@ -76,6 +82,7 @@ helm uninstall kube-prometheus-stack -n kube-prometheus-stack
 
 #### Prometheus
 
+Expose your prometheus service
 ```
 kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-prometheus 9090:9090
 ```
@@ -86,12 +93,17 @@ public-ip:9090
 ```
 #### Grafana
 
+Expose your grafana service
 ```
 kubectl port-forward -n svc/kube-prometheus-stack-grafana 8080:80
 ```
 
-Next visit `http://public-ip:8080` in your browser. You’ll see the Grafana login page. The default user account is admin with a password of `prom-operator`.
-
-#### Explore the Grafana pre-built dashboards
+Visiting `http://public-ip:8080` in your browser. You’ll see the Grafana login page. 
+The default user account is admin with a password of `prom-operator`.
+Explore the Grafana pre-built dashboards
 
 #### Configure alerts with Alertmanager (pending)
+
+expose your alertmanager service
+默认是9093端口
+
