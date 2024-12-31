@@ -1,13 +1,13 @@
 ## 0. Prerequisites:
 
-- OS：Ubuntu 24.04
+- Ubuntu 24.04
 - 2C4G20G EC2 Instance for Prometheus
 - 2C4G20G EC2 Instance for Grafana
 - Version:
-Choose the newest version: prometheus-3.0.1.linux-amd64.tar.gz
-Choose the newest version: grafana-enterprise-10.4.2.linux-amd64.tar.gz
-Choose the newest version: node_exporter-1.8.2.linux-amd64.tar.gz
-Choose the newest version: mysqld_exporter-0.16.0.linux-amd64.tar.gz
+	- Choose the newest version: prometheus-3.0.1.linux-amd64.tar.gz
+	- Choose the newest version: grafana-enterprise-10.4.2.linux-amd64.tar.gz
+	- Choose the newest version: node_exporter-1.8.2.linux-amd64.tar.gz
+	- Choose the newest version: mysqld_exporter-0.16.0.linux-amd64.tar.gz
 
 ## 1. docs:
 https://prometheus.io/docs/prometheus/latest/installation/

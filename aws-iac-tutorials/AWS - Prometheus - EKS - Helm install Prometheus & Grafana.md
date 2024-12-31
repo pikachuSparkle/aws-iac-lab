@@ -6,11 +6,11 @@ https://navyadevops.hashnode.dev/setting-up-prometheus-and-grafana-on-amazon-eks
 这个资料有点老了，整体流程是对的
 https://dev.to/aws-builders/monitoring-eks-cluster-with-prometheus-and-grafana-1kpb
 
-## 1. 先部署 aws-ebs-driver-driver
+## 1. EKS Cluster & aws-ebs-driver-driver Deployment
 
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
-## 2. 部署 Prometheus 服务 
+## 2. Deploy Prometheus 
 
 ```
 kubectl create ns prometheus
@@ -27,8 +27,7 @@ helm upgrade -install prometheus prometheus-community/prometheus \
   --set alertmanager.persistentVolume.storageClass="gp2"
 ```
 
-备注：
-
+NOTES：
 1. `alertmanager.persistentVolume.storageClass="gp2"`这个在helm install阶段好像配置不上，没找到helm chart里面的value，后续在pvc里面配置
 ```
 spec:
@@ -52,7 +51,7 @@ helm uninstall prometheus -n prometheus
 额外删除ns prometheus（以删除alertmanager的pvc）
 ```
 
-## 3. 暴露Prometheus服务
+## 3. Expose Prometheus Service
 
 ```text
 #The Prometheus server can be accessed via port 80 on the following DNS name #from within your cluster:
@@ -72,7 +71,7 @@ kubectl get all -n prometheus
 kubectl port-forward -n prometheus deploy/prometheus-server 8081:9090 &
 ```
 
-## 4. 安装Grafana
+## 4. Deploy Grafana
 
 ```
 helm repo add grafana https://grafana.github.io/helm-charts
@@ -95,7 +94,7 @@ datasources.yaml:
     isDefault: true
 ```
 
-配置数据源。结果后来发现datasource没有成功加上，手动加没有问题
+Config Data Sources。结果后来发现datasource没有成功加上，手动加没有问题
 `http://prometheus-server.prometheus.svc.cluster.local`
 
 ```shell
@@ -134,14 +133,14 @@ NOTES:
 ```
 
 
-删除部署
+Delete the deployment
 ```
 helm delete grafana -n grafana
 ```
 
-## 5. 暴露Grafana服务
+## 5. Expose Grafana Service
 
-#### 5.1 直接使用grafana服务的NodePortd端口就可以访问
+#### 5.1 直接使用grafana服务的NodePort端口就可以访问
 
 #### 5.2 创建ingress访问
 
