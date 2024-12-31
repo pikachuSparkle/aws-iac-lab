@@ -1,6 +1,8 @@
 ## 0. DOCS：
+GitHub
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
-官方Workshop https://www.eksworkshop.com/docs/fundamentals/storage/ebs/ebs-csi-driver
+AWS Official Workshop 
+https://www.eksworkshop.com/docs/fundamentals/storage/ebs/ebs-csi-driver
 ## 1. Set up driver permissions & Create an IAM role
 
 ```

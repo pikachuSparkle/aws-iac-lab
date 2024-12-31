@@ -47,9 +47,12 @@ Install Helm Chart
 
 ```shell
 # helm install [RELEASE_NAME] prometheus-community/kube-prometheus-stack
+# resolve "Cluster Status"-"Status: disabled" problem
+# --set alertmanager.alertmanagerSpec.forceEnableClusterMode=true
 helm install kube-prometheus-stack \
   --create-namespace \
   --namespace kube-prometheus-stack \
+  --set alertmanager.alertmanagerSpec.forceEnableClusterMode=true \
   prometheus-community/kube-prometheus-stack
 ```
 
@@ -78,13 +81,13 @@ uninstall the release
 helm uninstall kube-prometheus-stack -n kube-prometheus-stack  
 ```
 
-## 2. Validate
+## 2. Validate Prometheus & Grafana
 
 #### Prometheus
 
 Expose your prometheus service
 ```
-kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-prometheus 9090:9090
+kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-prometheus 9090:9090 --address 0.0.0.0
 ```
 
 Visiting this URL in your web browser will reveal the Prometheus UI:
@@ -95,15 +98,35 @@ public-ip:9090
 
 Expose your grafana service
 ```
-kubectl port-forward -n svc/kube-prometheus-stack-grafana 8080:80
+kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-grafana 8080:80 --address 0.0.0.0
 ```
 
 Visiting `http://public-ip:8080` in your browser. You’ll see the Grafana login page. 
-The default user account is admin with a password of `prom-operator`.
+The default user account is `admin` with a password of `prom-operator`.
 Explore the Grafana pre-built dashboards
 
-#### Configure alerts with Alertmanager (pending)
+## 3. Validate Alertmanager 
 
-expose your alertmanager service
-默认是9093端口
+#### expose your Alertmanager service
+```
+kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-altermanager 9093:9093 --address 0.0.0.0
+```
+
+#### troubleshooting:
+
+```
+"Cluster Status" - "Status: disabled" problem
+```
+
+```
+# add the following config in helm command
+# --set alertmanager.alertmanagerSpec.forceEnableClusterMode=true
+```
+
+ >If you are using a Helm chart, consider setting `forceEnableClusterMode: true` in your `values.yaml` file under `alertmanagerSpec`. This setting forces Alertmanager to run in cluster mode even with a single instance, which may resolve the "Disabled" status[](https://github.com/prometheus-community/helm-charts/issues/1452).
+
+#### Visit http://your-IP:9093 to validate your Alertmanager
+
+
+
 
