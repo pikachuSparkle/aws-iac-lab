@@ -108,6 +108,7 @@ Explore the Grafana pre-built dashboards
 ## 3. Validate Alertmanager 
 
 #### expose your Alertmanager service
+
 ```
 kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-altermanager 9093:9093 --address 0.0.0.0
 ```
@@ -125,7 +126,7 @@ kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-alterman
 
  >If you are using a Helm chart, consider setting `forceEnableClusterMode: true` in your `values.yaml` file under `alertmanagerSpec`. This setting forces Alertmanager to run in cluster mode even with a single instance, which may resolve the "Disabled" status[](https://github.com/prometheus-community/helm-charts/issues/1452).
 
-#### Visit http://your-IP:9093 to validate your Alertmanager
+#### visit http://your-IP:9093 to validate your Alertmanager
 
 
 
