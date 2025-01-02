@@ -128,6 +128,9 @@ kubectl port-forward -n kube-prometheus-stack svc/kube-prometheus-stack-alterman
 
 #### visit http://your-IP:9093 to validate your Alertmanager
 
+#### Alertmanager configuration file
+https://github.com/prometheus/alertmanager
+
 
 
 
