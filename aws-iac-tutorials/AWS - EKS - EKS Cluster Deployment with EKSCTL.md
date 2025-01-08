@@ -10,7 +10,7 @@ Following
 > https://www.youtube.com/watch?v=ZGKaSboqKzk&list=PLLuj64lk0VU7v9TTWPLQ2EePdOQCJSL_D&index=32
 #### 1.2 Approach 2 - eksctl Deployment
 
-Following the Section 2 of this artical
+Following the Section 2 of this article
 #### 1.3 Approach 3 - Terraform Deployment
 
 Following [[AWS - Terraform - EKS - Istio - 1. Getting Started with Istio on Amazon EKS]]
