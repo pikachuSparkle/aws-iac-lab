@@ -104,7 +104,7 @@ You can get the source code from
 
 NOTES:
 - The us-east-1 AZ has been tested and an ubuntu ec2 instances will been created
-- 
+- Specify the name of an existing EC2 KeyPair in the same region where you're launching the instance; otherwise, CloudFormation will fail to create the stack due to a validation error.
 
 
 The code as follows:
@@ -302,7 +302,8 @@ Mappings:
   AWSRegionArch2AMI:
     us-east-1:
       #HVM64: ami-0ff8a91507f77f867
-      HVM64: ami-0a0e5d9c7acc336f1
+      #HVM64: ami-0a0e5d9c7acc336f1
+      HVM64: ami-09115b7bffbe3c5e4
       HVMG2: ami-0a584ac55a7631c0c
     us-west-2:
       HVM64: ami-a0cfeed8
