@@ -28,7 +28,7 @@ in this scenario, using the most simple tools locap-path provisioner and ingress
 - AWS EKS Cluster
 - no less than 8G memory
 - storageClassName local-path
-- [[AWS - EKS - Ingress Controller - Network Load Balancer (NLB) & Ingress-nginx]]
+- [[AWS - EKS - Ingress Controller - NLB & Ingress-nginx]]
 
 
 Setup Cluster

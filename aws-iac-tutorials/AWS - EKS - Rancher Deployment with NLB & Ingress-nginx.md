@@ -9,7 +9,7 @@ https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade
 
 ## 2. Install Ingress-nginx
 
-[[AWS - EKS - Ingress Controller - Network Load Balancer (NLB) & Ingress-nginx]]
+[[AWS - EKS - Ingress Controller - NLB & Ingress-nginx]]
 
 ## 3. Install Rancher
 

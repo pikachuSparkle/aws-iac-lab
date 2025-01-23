@@ -10,7 +10,7 @@ https://dev.to/aws-builders/setup-rancher-on-eks-alb-50
 
 ## 2. Install [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-install-controller)
 
-[[AWS - EKS - Ingress Controller - Application Load Balancer (ALB) & Load Balancer Controller & ArgoCD]]
+[[AWS - EKS - Ingress Controller - ALB & Load Balancer Controller & ArgoCD]]
 
 ## 3. Deploy Rancher with ALB Ingress
 
