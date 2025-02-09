@@ -166,6 +166,7 @@ This CloudFormation template automates the creation and configuration of an EC2 
 - deploy the template with AWS dashboard console
 - visit `http://ip` and shows `Congratulations, you have successfully launched the AWS CloudFormation sample.`
 
+## AMI Check Command
 
 1. Check the available AMI
 
