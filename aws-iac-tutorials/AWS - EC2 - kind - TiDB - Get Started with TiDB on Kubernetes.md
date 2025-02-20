@@ -1,7 +1,7 @@
 # Prerequisites:
 - Amazon Linux 2023
 - Linux account ec2-user
-- t3a - 2C8G20G
+- t3a.large (2C8G20G)
 
 # Reference:
 https://docs.pingcap.com/tidb-in-kubernetes/stable/get-started?utm_source=github&utm_medium=tidb
@@ -13,7 +13,7 @@ you can get the shell command from the following path
 ```
 
 # 1. Prevision tools
-## Install Kind
+## Install kind
 ```
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
 chmod +x ./kind
@@ -41,7 +41,6 @@ rm ./linux-amd64 -rf
 sudo ls -l /usr/local/bin/
 helm version
 ```
-
 
 # 2. Create TiDB Cluster
 
