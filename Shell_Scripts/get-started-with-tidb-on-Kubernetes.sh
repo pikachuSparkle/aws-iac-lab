@@ -1,6 +1,7 @@
 # Prerequisites:
-# ec2-user on Amazon Linux 2003
-# 2C8G20G
+# Amazon Linux 2023
+# Linux account ec2-user
+# t3a.large (2C8G20G)
 # Reference:
 # https://docs.pingcap.com/tidb-in-kubernetes/stable/get-started?utm_source=github&utm_medium=tidb
 # https://github.com/pingcap/tidb-operator/tree/master/examples/basic
