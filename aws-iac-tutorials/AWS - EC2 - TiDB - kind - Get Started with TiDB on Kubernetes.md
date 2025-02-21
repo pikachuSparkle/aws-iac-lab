@@ -109,7 +109,6 @@ mysql --comments -h 127.0.0.1 -P 14000 -u root
 
 ```sql
 mysql> use test;
-
 mysql> create table hello_world (id int unsigned not null auto_increment primary key, v varchar(32));
 
 mysql> select tidb_version()\G
