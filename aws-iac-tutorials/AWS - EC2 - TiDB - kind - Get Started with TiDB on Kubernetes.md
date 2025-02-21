@@ -9,7 +9,7 @@ https://github.com/pingcap/tidb-operator/tree/master/examples/basic
 
 you can get the shell command from the following path
 ```shell
-./Shell_Scripts/get-started-with-tidb-on-Kubernetes.sh
+./Shell_Scripts/tidb-get-started-with-tidb-on-Kubernetes.sh
 ```
 
 # 1. Prevision tools
