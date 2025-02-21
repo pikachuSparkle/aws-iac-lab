@@ -113,7 +113,6 @@ hot_standby = on
 systemctl start postgresql
 ```
 
-
 ## 4. Validate
 
 That's OK if result of the command below on Primary Node is like follows. Verify the setting works normally to create databases or to insert data on Primary Node.
