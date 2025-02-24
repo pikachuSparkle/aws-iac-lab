@@ -12,7 +12,7 @@
 >In production environment， it is recommended to use `postgres` instead of `mypguser` as the user to run the PostgreSQL server.
 
   
-# 1. Install Percona Distribiution for PostgreSQL from binary tarballs
+# 1. Install Percona Distribution for PostgreSQL from binary tarballs
 
 ## Use ec2-user
 To check what OpenSSL version you have, run the following command:
@@ -27,6 +27,10 @@ sudo useradd mypguser -m
 sudo passwd mypguser
 ```
 
+```shell
+sudo useradd postgres -m
+sudo passwd postgres
+```
 ## The steps below install the tarballs for OpenSSL 3.x on x86_64 architecture.
 
 1. Create the directory where you will store the binaries. For example, /opt/pgdistro
@@ -39,6 +43,10 @@ sudo mkdir /opt/pgdistro -p
 sudo chown mypguser:mypguser /opt/pgdistro
 ```
 
+```shell
+sudo chown postgres:postgres /opt/pgdistro
+```
+
 3. Fetch the binary tarball.
 ```shell
 wget https://downloads.percona.com/downloads/postgresql-distribution-17/17.2/binary/tarball/percona-postgresql-17.2-ssl3-linux-x86_64.tar.gz
@@ -48,6 +56,11 @@ wget https://downloads.percona.com/downloads/postgresql-distribution-17/17.2/bin
 ```shell
 sudo tar -xvf percona-postgresql-17.2-ssl3-linux-x86_64.tar.gz -C /opt/pgdistro
 sudo chown mypguser:mypguser /opt/pgdistro -R
+```
+
+```shell
+sudo tar -xvf percona-postgresql-17.2-ssl3-linux-x86_64.tar.gz -C /opt/pgdistro
+sudo chown postgres:postgres /opt/pgdistro -R
 ```
 
 5. If you extracted the tarball in a directory other than /opt, copy percona-python3, percona-tcl and percona-perl to the /opt directory. This is required for the correct run of libraries that require those modules.
@@ -70,9 +83,16 @@ sudo mkdir /usr/local/pgsql/data -p
 sudo chown mypguser:mypguser /usr/local/pgsql/data
 ```
 
+```shell
+sudo chown postgres:postgres /usr/local/pgsql/data
+```
 9. Switch to the user that owns the Postgres process. In our example, mypguser:
 ```shell
 sudo su - mypguser
+```
+
+```shell
+sudo su - postgres
 ```
 
 10. Initiate the PostgreSQL data directory:
@@ -91,7 +111,7 @@ sudo su - mypguser
 ```
 # 2. Start the components
 
-## Use mypguser
+## Use mypguser/postgres
 
 After you unpacked the tarball and added the location of the components’ binaries to the $PATH variable, the components are available for use. You can invoke a component by running its command-line tool.
 
