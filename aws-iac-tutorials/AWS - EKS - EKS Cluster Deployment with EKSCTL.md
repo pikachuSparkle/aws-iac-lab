@@ -3,24 +3,21 @@
 
 There are three approaches to create EKS Cluster in AWS.
 #### 1.1 Approache 1 - AWS dashboard 
-Following
+
 > **Elastic Kubernetes Service | Deploy a sample application**
 > https://www.youtube.com/watch?v=I6yqVBhNXxY
 > **Elastic Kubernetes Service | Application Load Balancing on EKS**
 > https://www.youtube.com/watch?v=ZGKaSboqKzk&list=PLLuj64lk0VU7v9TTWPLQ2EePdOQCJSL_D&index=32
 #### 1.2 Approach 2 - eksctl Deployment
 
-Following the Section 2 of this article
+Following this article
 #### 1.3 Approach 3 - Terraform Deployment
 
 Following [[AWS - Terraform - EKS - Istio - 1. Getting Started with Istio on Amazon EKS]]
 
-## 2. eksctl Deployment
-
-#### 2.1 eksctl Binary Installation
+## 2. eksctl Tool Binary Installation
 
 DOCS: https://eksctl.io/installation/
-
 ```shell
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
 ARCH=amd64
@@ -36,9 +33,7 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 sudo mv /tmp/eksctl /usr/local/bin
 ```
 
-
-AWS credentials配置文件：~/.aws/credentials
-
+edit aws credentials config file：~/.aws/credentials
 ```
 [default]
 aws_access_key_id = 
@@ -53,9 +48,10 @@ aws_access_key_id =
 aws_secret_access_key = 
 ```
 
-#### 2.2 EKS Cluster Deployment
+## 3. EKS Cluster Deployment
 
-`cluster.yaml` 
+Edit `cluster.yaml` 
+DOCS: https://eksctl.io/usage/schema/
 ```yaml
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
@@ -77,7 +73,7 @@ nodeGroups:
     desiredCapacity: 1
     volumeSize: 20
 ```
-DOCS: https://eksctl.io/usage/schema/
+
 
 Create EKS Cluster as follows
 ```shell
@@ -88,13 +84,13 @@ eksctl create cluster -f cluster.yaml
 
 NOTES:
 - The Dafault Disk is 80G, tunning the disk size to 20G.
-- `NAT GATEWAY` will be created by default, which is not free. The "NAT GATEWAY" is utilized for helping `EC2 instances` in `private subnet` to visit the public internet (inbound direction is not allowed, whick is the best practise for EKS). [[AWS - Concepts - NAT Gateway]]
-- eksctl will create EC2 instances in `public subnet`. Hense, opening `NAT GATEWAY` is no need. Dev environment could tolerate less security for saving money.
+- `NAT GATEWAY` will be created by default, which will be charged. The "NAT GATEWAY" is utilized for helping `EC2 instances` in `private subnet` to visit the public internet (inbound direction is not allowed, whick is the best practise for EKS). [[AWS - Concepts - NAT Gateway]]
+- eksctl will create EC2 instances in `public subnet`. Hence, opening `NAT GATEWAY` is no need. Dev environment could tolerate less security for saving money.
 
 
 #### 2.3 Validate with Application
 
-metrices-server 
+install `metrices-server` application
 [DOCS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)
 ```shell
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
