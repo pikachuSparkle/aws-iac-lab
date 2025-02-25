@@ -23,13 +23,16 @@ cd terraform-aws-eks-blueprints/patterns/istio
 you can directly references to the refined terraform codes in this git repo & apply it with terraform
 ```shell
 git clone https://github.com/pikachuSparkle/aws-iac-lab.git
-ll aws-iac-lab/Terraform_Codes/istio/main.tf
+vim aws-iac-lab/Terraform_Codes/istio/main.tf
 ```
 
 #### 2.3 Apply the terraform codes 
-```
+```shell
 terraform init 
 terraform apply -auto-approve 
+
+# configure kubeconfig
+aws eks --region us-east-1 update-kubeconfig --name istio
 ```
 
 Once the resources have been provisioned, you will need to replace the `istio-ingress` pods due to a `istiod` [dependency issue](https://github.com/istio/istio/issues/35789). Use the following command to perform a rolling restart of the `istio-ingress` pods:
