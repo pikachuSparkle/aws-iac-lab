@@ -13,16 +13,17 @@ https://istio.io/latest/docs/setup/getting-started/
 
 ## 2. EKS Cluster setup
 
-#### 2.1 Git clone the source code
+#### 2.1 Git clone the original source code
 ```
 git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git 
 cd terraform-aws-eks-blueprints/patterns/istio
 ```
 
 #### 2.2 Change the main.tf as the following Section 4
-you can references to the refined terraform codes in the following path & apply it with terraform
-```
-./Terraform_Codes/istio/main.tf
+you can directly references to the refined terraform codes in this git repo & apply it with terraform
+```shell
+git clone https://github.com/pikachuSparkle/aws-iac-lab.git
+ll aws-iac-lab/Terraform_Codes/istio/main.tf
 ```
 
 #### 2.3 Apply the terraform codes 
