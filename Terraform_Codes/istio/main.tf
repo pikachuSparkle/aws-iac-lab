@@ -61,8 +61,9 @@ module "eks" {
   version = "~> 20.11"
 
   cluster_name                   = local.name
-  cluster_version                = "1.30"
+  cluster_version                = "1.32"
   cluster_endpoint_public_access = true
+  #cluster_endpoint_private_access = true # in VPC access
 
   # Give the Terraform identity admin access to the cluster
   # which will allow resources to be deployed into the cluster
