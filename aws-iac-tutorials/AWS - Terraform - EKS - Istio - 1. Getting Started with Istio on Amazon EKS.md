@@ -51,7 +51,9 @@ done
 
 ## 3. Cluster Destroy and Resource Recovery
 https://aws-ia.github.io/terraform-aws-eks-blueprints/getting-started/#destroy
-```yaml
+```shell
+terraform destroy -target='module.eks_blueprints_addons.helm_release.this["istio-ingress"]' -auto-approve
+
 terraform destroy -target="module.eks_blueprints_addons" -auto-approve
 terraform destroy -target="module.eks" -auto-approve
 terraform destroy -auto-approve
@@ -362,13 +364,13 @@ kubectl label namespace workshop istio-injection=enabled
 Now deploy the provided [mesh-basic](https://github.com/aws-samples/istio-on-eks/blob/main/modules/01-getting-started/Chart.yaml) Helm Chart. This helm chart is packaged with a deployment manifest for:
 - All the three microservices (`frontend`,`prodcatalog`, and `catalogdetail`)
 - Istio Gateway and a VirtualService.
-```yaml
+```shell
 # Install all the microservices in one go
 helm install mesh-basic . -n workshop
 ```
 
 Confirm the installation of microservices in the workshop namespace by running this command:
-```
+```shell
 kubectl get pods -n workshop
 ```
 
@@ -392,7 +394,7 @@ v2----> `Vendors`: `ABC.com, XYZ.com`
 
 In this article and the upcoming series, we will be gradually introducing all of the Istio core components. For this particular blog, we are focusing on two key Istio elements: 
 **Istio Ingress Gateway** and **VirtualService** that are deployed via the Helm chart in the previous step.
-```
+```shell
 kubectl get Gateway,VirtualService -n workshop
 ```
 
@@ -401,7 +403,7 @@ kubectl get Gateway,VirtualService -n workshop
 
 In our example, the `productapp-gateway` Gateway is responsible for defining which hostnames the ingress traffic allows through this gateway, its kind (protocol), and the port at which it is accepted.
 
-```
+```shell
 kubectl get gateway productapp-gateway -n workshop -o yaml
 ```
 
@@ -409,7 +411,7 @@ kubectl get gateway productapp-gateway -n workshop -o yaml
 
  [VirtualService](https://istio.io/latest/docs/concepts/traffic-management/#virtual-services) defines a set of traffic routing rules to apply when a hostname is addressed. Each routing rule defines matching criteria for traffic of a specific protocol. If the traffic is matched, then it is sent to a named destination service (or subset/version of it) defined in the registry. Without virtual services, Envoy distributes traffic using round-robin load balancing between all service instances mapped to the hostname. With a virtual service, you can specify routing rules that tell Envoy how to send the virtual service’s traffic to appropriate destinations.
 
-```
+```shell
 kubectl get VirtualService productapp -n workshop -o yaml
 ```
 
@@ -426,13 +428,13 @@ Now that we have demonstrated how to deploy services into Istio Service Mesh, le
 #### Kiali
 [Kiali](https://kiali.io/) is a console for Istio service mesh and we will be using Kiali to validate our setup. Kiali should already be available as a deployment in the `istio-system` namespace if you have setup Istio using the [EKS Istio blueprint](https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/istio/) we shared before.
 
-```
+```shell
 kubectl port-forward svc/kiali 20001:20001 -n istio-system --address 0.0.0.0
 ```
 
 #### Grafana
 
-```
+```shell
 kubectl port-forward svc/grafana 3000:3000 -n istio-system --address 0.0.0.0
 ```
 
@@ -469,7 +471,7 @@ helm uninstall mesh-basic -n workshop kubectl delete namespace workshop
 
 To further remove the EKS cluster with deployed Istio that you might have created in the prerequisite step, run the commands provided [here](https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/istio/#destroy).
 
-```
+```shell
 terraform destroy -target='module.eks_blueprints_addons.helm_release.this["istio-ingress"]' -auto-approve
 
 terraform destroy -target="module.eks_blueprints_addons" -auto-approve 
