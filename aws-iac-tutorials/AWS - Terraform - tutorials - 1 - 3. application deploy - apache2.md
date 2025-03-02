@@ -1,7 +1,25 @@
 ## References:
 https://www.youtube.com/watch?v=SLB_c_ayRMo
 
+## Command
+
+```shell
+git clone https://github.com/pikachuSparkle/aws-iac-lab.git
+cd aws-iac-lab/Terraform_Codes/terraform-tutorials/03_aws_demo_apache2/
+terraform init 
+terraform apply
+```
+
+```shell
+terraform destroy
+```
 ## Application Deployment - apache2
+
+```
+NOTES: 
+- there will be an error for the first time running this script because the instance is not created yet
+- the error will be gone, if exec "trrraform apply" again after the instance is created
+```
 
 main.tf
 ```

@@ -1,7 +1,22 @@
 ## References:
 https://www.youtube.com/watch?v=SLB_c_ayRMo
 
+## Command
+
+```shell
+git clone https://github.com/pikachuSparkle/aws-iac-lab.git
+cd aws-iac-lab/Terraform_Codes/terraform-tutorials/02_aws_vpc/
+terraform init 
+terraform apply
+```
+
+```shell
+terraform destroy
+```
+
 ## Create VPC
+
+
 
 main.tf
 ```

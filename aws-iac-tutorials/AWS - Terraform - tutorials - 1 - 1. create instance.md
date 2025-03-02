@@ -4,15 +4,17 @@ https://www.youtube.com/watch?v=SLB_c_ayRMo
 ## Create EC2 instances
 
 ```shell
-
-git clone 
-
+git clone https://github.com/pikachuSparkle/aws-iac-lab.git
+cd aws-iac-lab/Terraform_Codes/terraform-tutorials/01_aws_instance/
 terraform init 
-
+terraform apply
 ```
 
-
+```shell
+terraform destroy
 ```
+
+```terraform
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 terraform {
   required_providers {
