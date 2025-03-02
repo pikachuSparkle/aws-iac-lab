@@ -3,7 +3,15 @@ https://www.youtube.com/watch?v=SLB_c_ayRMo
 
 ## Create EC2 instances
 
-main.tf
+```shell
+
+git clone 
+
+terraform init 
+
+```
+
+
 ```
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 terraform {

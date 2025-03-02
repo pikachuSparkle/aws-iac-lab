@@ -134,14 +134,17 @@ resource "aws_network_interface" "web-server-nic" {
 }
 
 
-# 8. Assign an elastic IP to the network interface create in step 7
+# 8. Assign an elastic IP 
+# associate with the network interface, associate_with_private_ip
+# wait internet gateway to be created
+# wait for the instance to be created
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
 resource "aws_eip" "one" {
   domain                    = "vpc"
   network_interface         = aws_network_interface.web-server-nic.id
   associate_with_private_ip = "10.0.2.4"
-  depends_on = [ aws_internet_gateway.prod-gw ]
-  #Note: EIP may require IGW to exist prior to association. Use depends_on to set an explicit dependency on the IGW.
+  depends_on = [aws_internet_gateway.prod-gw,null_resource.wait_for_instance]
+  # Note: EIP may require IGW to exist prior to association. Use depends_on to set an explicit dependency on the IGW.
 }
 
 
@@ -152,6 +155,7 @@ resource "aws_eip" "one" {
 # Create a EC2 instance
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
 resource "aws_instance" "web-server-instance" {
+  
   ami           = "ami-0a0e5d9c7acc336f1"
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"
@@ -170,7 +174,20 @@ resource "aws_instance" "web-server-instance" {
               sudo bash -c "echo your very first web server > /var/www/html/index.html"
               EOF
 
+
   tags = {
     Name = "tag-web-server-instance"
+  }
+}
+
+# 10. Wait for the instance to be in running state
+resource "null_resource" "wait_for_instance" {
+  
+  provisioner "local-exec" {
+    command = "echo Waiting for instance to be ready..."
+  }
+
+  triggers = {
+    instance_id = aws_instance.web-server-instance.id
   }
 }

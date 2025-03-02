@@ -129,7 +129,9 @@ resource "aws_network_interface" "web-server-nic" {
 }
 
 
-# 8. Assign an elastic IP to the network interface create in step 7
+# 8. Assign an elastic IP to the network interface 
+# NOTES: there will be an error for the first time running this script because the instance is not created yet
+#        the error will be gone, if exec "trrraform apply" again after the instance is created
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
 resource "aws_eip" "one" {
   domain                    = "vpc"
