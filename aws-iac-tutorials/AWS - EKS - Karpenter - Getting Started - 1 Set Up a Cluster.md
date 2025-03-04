@@ -10,17 +10,20 @@ This guide uses `eksctl` to create the cluster. It should take less than 1 hou
 References:
 https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/
 
-## Create a cluster
 
+NOTES:
 All-in-one scripts, please follow the following shell commands, and you can obtain the shell scripts.
-```
+```shell
 git clone https://github.com/pikachuSparkle/aws-iac-lab.git
 cd aws-iac-lab/EKSCTL_Codes/karpenter/
 vim karpenter-set-up-cluster.sh
+# To keep the environment variables, source command should be used
+source karpenter-set-up-cluster.sh
 ```
+And you can also go through the article step by step  as floows.
 
 
-#### 1. Install utilities [](https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#1-install-utilities)
+## 1. Install utilities [](https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#1-install-utilities)
 Karpenter is installed in clusters with a Helm chart.
 
 Karpenter requires cloud provider permissions to provision nodes, for AWS IAM Roles for Service Accounts (IRSA) should be used. IRSA permits Karpenter (within the cluster) to make privileged requests to AWS (as the cloud provider) via a ServiceAccount.
@@ -34,7 +37,7 @@ Install these tools before proceeding (the newest version):
 
 [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) with a user that has sufficient privileges to create an EKS cluster. Verify that the CLI can authenticate properly by running `aws sts get-caller-identity`.
 
-#### 2. Set environment variables
+## 2. Set environment variables
 
 After setting up the tools, set the Karpenter and Kubernetes version:
 ```shell
@@ -67,7 +70,7 @@ echo -e "AMD_AMI_ID: ${AMD_AMI_ID}"
 echo -e "GPU_AMI_ID: ${GPU_AMI_ID}"
 ```
 
-#### 3. Create a Cluster
+## 3. Create a Cluster
 
 Create a basic cluster with `eksctl`. The following cluster configuration will:
 
