@@ -296,22 +296,24 @@ module "vpc" {
 ```
 
 NOTES:
-- AWS best practices 是 node group部署在private_subnet中，为了访问公网，需要增加一个nat gateway，既保证安全，又可以访问公网。原版的terraform代码就是这样的。
-- 为了省钱，对原有代码进行了修改，node group直接部署在public_subnet中，删除nat gateway。另外压缩node的配置。形成了穷人版代码。
+- In AWS best practices, node group should be deployed in private subnet. In this scenario, NAT gateway is needed, for NAT gateway allow instances in a private subnet to access the internet or other external services without exposing their private IP addresses. NAT gateways significantly enhance the security of instances in private subnets. 
+- The original terraform codes used NAT gateway, which will incur costs.
+- In an effort to reduce costs, the original code was modified. The node group is now deployed directly in a public subnet, eliminating the need for a NAT gateway. Furthermore, the node configuration has been optimized to use fewer resources. This has effectively created a more economical, or "bare-bones" version of the deployment.
 
 #### 4.1 Change local.region = "us-east-1"
 #### 4.2 Change the instance_type & node group size
 ```
-      # 调整成t3a.medium会更便宜10%,CPU换成稍弱的AMD处理器
+      # t3a.medium will cheaker 10% than t3a.medium
+      # Intel CPU >> AMD CPU
       instance_types = ["t3a.medium"]
 
       min_size     = 1
       max_size     = 2
       desired_size = 1
 ```
-#### 4.3 use the public_subnet
+#### 4.3 Use the public_subnet
 ```
-# in EKS subnet configurate
+# in EKS subnet configuration
 subnet_ids = module.vpc.public_subnets
 ```
 
@@ -326,9 +328,9 @@ subnet_ids = module.vpc.public_subnets
 # Enable public IP assignment for the nodes
       associate_public_ip_address = true
 ```
-#### 4.4 nat_gateway delete
+#### 4.4 Delete NAT_gateway
 ```
-# in VPC
+# In this VPC
   enable_nat_gateway = false
   single_nat_gateway = false
 ```
@@ -339,9 +341,8 @@ subnet_ids = module.vpc.public_subnets
 # which will allow resources to be deployed into the cluster
   enable_cluster_creator_admin_permissions = true
 ```
-https://repost.aws/zh-Hans/knowledge-center/eks-kubernetes-object-access-error
-授予权限问题
+https://repost.aws/knowledge-center/eks-kubernetes-object-access-error
 
-#### 4.6 关于子网，demo中建立了3个`private subnet`, 3个`public subnet`
+#### 4.6 In this demo, 3 private subnets and 3 public subnets are created. 
 
 

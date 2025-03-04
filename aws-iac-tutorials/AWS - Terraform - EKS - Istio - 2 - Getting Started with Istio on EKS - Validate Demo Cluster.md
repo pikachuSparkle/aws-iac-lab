@@ -5,7 +5,6 @@ Following the [[AWS - Terraform - EKS - Istio - 1 - Getting Started with Istio o
 
 -----------------
 
-
 ## 5. Deploying the microservices to Istio Service Mesh
 
 We will be following the steps from the  [01-getting-started module](https://github.com/aws-samples/istio-on-eks/tree/main/modules/01-getting-started) of the istio-on-eks Git repository
