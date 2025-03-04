@@ -9,7 +9,7 @@ You can get the source code from
 
 ## LAMP installation
 
-We'll build on the previous basic Amazon EC2 template - [[AWS - CloudFormation - EC2 - Deploy applications on Amazon EC2 - 1 - Basic Amazon EC2 instance]] - to automatically install Apache, MySQL, and PHP. To install the applications, we'll add a `UserData` property and `Metadata` property. However, the template won't configure and start the applications until the next section.
+We'll build on the previous basic Amazon EC2 template - [[AWS - CloudFormation - Official - Deploy applications on Amazon EC2 - 1 - Basic Amazon EC2 instance]] - to automatically install Apache, MySQL, and PHP. To install the applications, we'll add a `UserData` property and `Metadata` property. However, the template won't configure and start the applications until the next section.
 
 The `UserData` property runs two shell commands: 
 - install the CloudFormation helper scripts 

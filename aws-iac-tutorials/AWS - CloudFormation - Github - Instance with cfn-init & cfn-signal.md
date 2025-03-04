@@ -1,21 +1,21 @@
 ## Prerequisites
 
-This demo is from the official sample GitHub [aws-cloudformation-templates](https://github.com/aws-cloudformation/aws-cloudformation-templates)
+This demo is from the AWS templates GitHub [aws-cloudformation-templates](https://github.com/aws-cloudformation/aws-cloudformation-templates)
 
 There are two methods that you could obtain the demo codes:
-- from the AWS official GitHub: [InstanceWithCfnInit.yaml](https://github.com/aws-cloudformation/aws-cloudformation-templates/blob/main/EC2/InstanceWithCfnInit.yaml "InstanceWithCfnInit.yaml")
+1. From the AWS templates GitHub: [InstanceWithCfnInit.yaml](https://github.com/aws-cloudformation/aws-cloudformation-templates/blob/main/EC2/InstanceWithCfnInit.yaml "InstanceWithCfnInit.yaml")
 ```
 git clone https://github.com/aws-cloudformation/aws-cloudformation-templates.git
 cd ./aws-cloudformation-templates/EC2/
 ll ./InstanceWithCfnInit.yaml
 ```
-- from this repo
+2. From this repo
 ```
 ./CloudFormation_Codes/InstanceWithCfnInit.yaml
 ```
 
 >NOTES:
->In official codes, there is a vital bug which has been fixed in this blog.
+>In AWS GitHub codes, there is a vital bug which has been fixed in this blog (fix committed).
 
 ```yaml
 UserData: !Base64
