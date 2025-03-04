@@ -55,4 +55,4 @@ These provide values that can be retrieved after stack creation:
 - **Elastic IP Association**: The template uses `AWS::EC2::EIPAssociation` to associate the Elastic IP with the EC2 instance. The `AllocationId` is obtained from the `IPAddress` resource.
 - **Security Group**: The template creates a security group allowing SSH access from a specified IP range.
 - **Dynamic AMI Selection**: The template uses an SSM parameter to fetch the latest Amazon Linux 2 AMI ID.
-- **SecurityGroupIds**: Only Security Group id can be allowed, and `!GetAtt InstanceSecurityGroup.GroupId`
+- **SecurityGroupIds**: Only Security Group id must be referenced, and `!GetAtt InstanceSecurityGroup.GroupId` will be used. Otherwise, "Resource handler returned message: "The parameter groupName cannot be used with the parameter subnet" error will be caused.
