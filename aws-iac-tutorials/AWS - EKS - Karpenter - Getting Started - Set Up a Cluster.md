@@ -7,6 +7,9 @@ The guide below explains how to utilize the [Karpenter provider for AWS](https:
 
 This guide uses `eksctl` to create the cluster. It should take less than 1 hour to complete, and cost less than $0.25. Follow the clean-up instructions to reduce any charges.
 
+References:
+https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/
+
 ## Create a cluster
 
 All-in-one scripts, please follow the following shell commands, and you can obtain the shell scripts.
@@ -142,5 +145,5 @@ echo -e "KARPENTER_IAM_ROLE_ARN: ${KARPENTER_IAM_ROLE_ARN}"
 
 ```shell
 # Delete the cluster
-eksctl delete cluster --name "${CLUSTER_NAME}"
+eksctl delete cluster --name "${CLUSTER_NAME}" --region us-east-1
 ```
