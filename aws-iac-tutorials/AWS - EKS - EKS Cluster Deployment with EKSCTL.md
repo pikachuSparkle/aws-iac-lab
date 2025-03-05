@@ -91,7 +91,8 @@ NOTES:
 #### 2.3 Validate with Application
 
 install `metrices-server` application
-[DOCS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)
+- [AWS DOCS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)
+- [Metrics Server Github](https://github.com/kubernetes-sigs/metrics-server)
 ```shell
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 kubectl get deployment metrics-server -n kube-system

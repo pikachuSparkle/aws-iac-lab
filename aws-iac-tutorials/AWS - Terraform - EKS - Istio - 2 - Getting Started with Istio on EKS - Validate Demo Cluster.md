@@ -54,6 +54,8 @@ v2----> `Vendors`: `ABC.com, XYZ.com`
 
 In this article and the upcoming series, we will be gradually introducing all of the Istio core components. For this particular blog, we are focusing on two key Istio elements: 
 **Istio Ingress Gateway** and **VirtualService** that are deployed via the Helm chart in the previous step.
+[Ingress Diagram](https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2023/11/22/ingress-diagram.png)
+
 ```shell
 kubectl get Gateway,VirtualService -n workshop
 ```
@@ -98,7 +100,7 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system --address 0.0.0.0
 kubectl port-forward svc/grafana 3000:3000 -n istio-system --address 0.0.0.0
 ```
 
-Use your browser to navigate to `http://localhost:3000/dashboards`
+Use your browser to navigate to `http://IP:3000/dashboards`
 
 ## 8. Testing
 
@@ -125,8 +127,10 @@ Based on traffic animation captured in Kiali as a result of our load test, we ca
 
 ## 9. Cleanup
 
-```
-helm uninstall mesh-basic -n workshop kubectl delete namespace workshop
+Cleanup application resources
+```shell
+helm uninstall mesh-basic -n workshop 
+kubectl delete namespace workshop
 ```
 
 To further remove the EKS cluster with deployed Istio that you might have created in the prerequisite step, run the commands provided [here](https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/istio/#destroy).
