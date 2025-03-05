@@ -1,14 +1,14 @@
 ## 1. DOCS:
 
 Istio Installing on AWS
-https://aws.amazon.com/cn/blogs/opensource/getting-started-with-istio-on-amazon-eks/
 https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/istio/
+https://aws.amazon.com/cn/blogs/opensource/getting-started-with-istio-on-amazon-eks/
 
 Source Code:
 https://github.com/aws-ia/terraform-aws-eks-blueprints
 https://github.com/aws-samples/istio-on-eks/tree/main/modules/01-getting-started
 
-Istio installing on Conanical K8S deployment 
+Istio Offical DOCS 
 https://istio.io/latest/docs/setup/getting-started/
 
 ## 2. EKS Cluster setup
@@ -18,13 +18,7 @@ https://istio.io/latest/docs/setup/getting-started/
 git clone https://github.com/aws-ia/terraform-aws-eks-blueprints.git 
 cd terraform-aws-eks-blueprints/patterns/istio
 ```
-
-#### 2.2 Change the main.tf as the following Section 4
-you can directly references to the refined terraform codes in this git repo & apply it with terraform
-```shell
-git clone https://github.com/pikachuSparkle/aws-iac-lab.git
-vim aws-iac-lab/Terraform_Codes/istio/main.tf
-```
+#### 2.2 Obtain the main.tf as the following Section 4
 
 #### 2.3 Apply the terraform codes 
 ```shell
@@ -59,10 +53,21 @@ terraform destroy -target="module.eks" -auto-approve
 terraform destroy -auto-approve
 ```
 
-## 4. Source Reading & Explanation & Reconfiguration
+## 4. Source Obtaining & Explanation & Reconfiguration
 
-main.tf
+#### 4.1 Obtaining Source
+
+You have two approaches to obtain the terraform source code:
+
+1. You can directly references to the refined terraform codes in this Github repo & apply it with terraform command.
+```shell
+git clone https://github.com/pikachuSparkle/aws-iac-lab.git
+vim aws-iac-lab/Terraform_Codes/istio/main.tf
 ```
+
+2. You can change the original code manually as follows `main.tf`
+
+```yaml
 provider "aws" {
   region = local.region
 }
@@ -300,8 +305,9 @@ NOTES:
 - The original terraform codes used NAT gateway, which will incur costs.
 - In an effort to reduce costs, the original code was modified. The node group is now deployed directly in a public subnet, eliminating the need for a NAT gateway. Furthermore, the node configuration has been optimized to use fewer resources. This has effectively created a more economical, or "bare-bones" version of the deployment.
 
-#### 4.1 Change local.region = "us-east-1"
-#### 4.2 Change the instance_type & node group size
+#### 4.2 Explanation:
+###### 4.2.1 Change local.region = "us-east-1"
+###### 4.2.2 Change the instance_type & node group size
 ```
       # t3a.medium will cheaker 10% than t3a.medium
       # Intel CPU >> AMD CPU
@@ -311,7 +317,7 @@ NOTES:
       max_size     = 2
       desired_size = 1
 ```
-#### 4.3 Use the public_subnet
+###### 4.2.3 Use the public_subnet
 ```
 # in EKS subnet configuration
 subnet_ids = module.vpc.public_subnets
@@ -328,14 +334,14 @@ subnet_ids = module.vpc.public_subnets
 # Enable public IP assignment for the nodes
       associate_public_ip_address = true
 ```
-#### 4.4 Delete NAT_gateway
+###### 4.2.4 Delete NAT_gateway
 ```
 # In this VPC
   enable_nat_gateway = false
   single_nat_gateway = false
 ```
 
-#### 4.5 About IAM and aws-auth (no changing)
+###### 4.2.5 About IAM and aws-auth (no changing)
 ```
 # Give the Terraform identity admin access to the cluster
 # which will allow resources to be deployed into the cluster
@@ -343,6 +349,6 @@ subnet_ids = module.vpc.public_subnets
 ```
 https://repost.aws/knowledge-center/eks-kubernetes-object-access-error
 
-#### 4.6 In this demo, 3 private subnets and 3 public subnets are created. 
+###### 4.2.6 In this demo, 3 private subnets and 3 public subnets are created. 
 
 
