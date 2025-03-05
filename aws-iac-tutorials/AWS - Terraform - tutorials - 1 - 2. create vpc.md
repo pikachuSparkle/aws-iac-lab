@@ -17,7 +17,6 @@ terraform destroy
 ## Create VPC
 
 
-
 main.tf
 ```
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs

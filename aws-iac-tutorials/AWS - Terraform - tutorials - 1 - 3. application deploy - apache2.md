@@ -22,6 +22,7 @@ NOTES:
 ```
 
 main.tf
+
 ```
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 terraform {
@@ -200,20 +201,14 @@ resource "aws_instance" "web-server-instance" {
 
 ## Check the status
 
-```
+```shell
 terraform
-
 terraform state
-
 terraform state list
- 
 terraform state show ****
-
 ```
 
-```
-
-terraform destroy -target ****
+```shell
 terraform apply   -target ****
-
+terraform destroy -target ****
 ```
