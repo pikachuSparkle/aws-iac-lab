@@ -30,7 +30,9 @@ lb_endpoint = "http://learn-asg-terramino-lb-1572171601.us-east-1.elb.amazonaws.
 
 Visit `application_endpoint` and `lb_endpoint` with your browser.
 
-Next, use `cURL` to send a request to the `lb_endpoint` output, which reports the instance ID of the EC2 instance responding to your request.
+&& 
+
+Use `cURL` to send a request to the `lb_endpoint` output, which reports the instance ID of the EC2 instance responding to your request.
 
 ```
 $ curl $(terraform output -raw lb_endpoint)
@@ -91,14 +93,24 @@ resource "aws_launch_template" "terramino" {
 }
 
 ```
-a user data script, which configures the instances to run the `user-data.sh` file in this repository at launch time. The user data script installs dependencies and initializes Terramino, a Terraform-skinned Tetris application.
+
+- a user data script, which configures the instances to run the `user-data.sh` file in this repository at launch time. The user data script installs dependencies and initializes Terramino, a Terraform-skinned Tetris application.
+- an Amazon Linux AMI specified by a data source.
+- a security group to associate with the instances. The security group (defined later in this file) allows ingress traffic on port 80 and egress traffic to all endpoints.
+
+You cannot modify a launch configuration, so any changes to the definition force Terraform to create a new resource. The `create_before_destroy` argument in the `lifecycle` block instructs Terraform to create the new version before destroying the original to avoid any service interruptions.
 
 ```
 NOTES:
-In AWS EC2, user data scripts are executed by `cloud-init` during the first boot of an instance. Typically, `cloud-init` runs as the **root** user. This means that any `user-data.sh` script specified in your `aws_launch_template` resource will also be executed as the **root** user.
+In AWS EC2, user data scripts are executed by `cloud-init` during the first boot of an instance. Typically, `cloud-init` runs as the `root` user. This means that any `user-data.sh` script specified in your `aws_launch_template` resource will also be executed as the `root` user.
 ```
 
-In the following documentation, you will know how to refer to  EC2 reference template.
+
+#### Auto Scaling group
+
+An ASG is a logical grouping of EC2 instances running the same configuration. ASGs allow for dynamic scaling and make it easier to manage a group of instances that host the same services.
+
+In the following documentation, you will know how to reference EC2 template resource.
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
 ```
 resource "aws_autoscaling_group" "terramino" {
@@ -125,5 +137,61 @@ resource "aws_autoscaling_group" "terramino" {
 }
 ```
 
-You cannot modify a launch configuration, so any changes to the definition force Terraform to create a new resource. The `create_before_destroy` argument in the `lifecycle` block instructs Terraform to create the new version before destroying the original to avoid any service interruptions.
+This ASG configuration sets:
+- a list of subnets where the ASGs will launch new instances. This configuration references the public subnets created by the `vpc` module.
+
+#### Load balancer resources
+
+Since you will launch multiple instances running your Terramino application, you must provision a load balancer to distribute traffic across the instances.
+
+```
+http/https ----> aws_lb_listener ----> aws_lb ----> aws_lb_target_group
+```
+The `aws_lb` resource creates an application load balancer, which routes traffic at the application layer.
+
+main.tf
+```
+resource "aws_lb" "terramino" {
+  name               = "learn-asg-terramino-lb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.terramino_lb.id]
+  subnets            = module.vpc.public_subnets
+}
+```
+
+The [`aws_lb_listener` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) specifies how to handle any HTTP requests to port `80`. In this case, it forwards all requests to the load balancer to a target group. You can define multiple listeners with distinct listener rules for more complex traffic routing.
+
+main.tf
+```
+resource "aws_lb_listener" "terramino" {
+  load_balancer_arn = aws_lb.terramino.arn
+  port              = "80"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.terramino.arn
+  }
+}
+```
+
+A target group defines the collection of instances your load balancer sends traffic to. It does not manage the configuration of the targets in that group directly, but instead specifies a list of destinations the load balancer can forward requests to.
+
+main.tf
+```
+ resource "aws_lb_target_group" "terramino" {
+   name     = "learn-asg-terramino"
+   port     = 80
+   protocol = "HTTP"
+   vpc_id   = module.vpc.vpc_id
+ }
+
+resource "aws_autoscaling_attachment" "terramino" {
+  autoscaling_group_name = aws_autoscaling_group.terramino.id
+  alb_target_group_arn   = aws_lb_target_group.terramino.arn
+}
+```
+
+While you can use an [`aws_lb_target_group_attachment` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group_attachment) to directly associate an EC2 instance or other target type with the target group, the dynamic nature of instances in an ASG makes that hard to maintain in configuration. Instead, this configuration links your Auto Scaling group with the target group using the `aws_autoscaling_attachment` resource. This allows AWS to automatically add and remove instances from the target group over their lifecycle.
 
