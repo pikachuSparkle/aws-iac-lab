@@ -18,9 +18,9 @@ git clone https://github.com/rancher/quickstart
 cd quickstart/rancher/aws
 ```
 
-3. 1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
+3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-4. 1. Edit `terraform.tfvars` and customize the following variables:
+4. Edit `terraform.tfvars` and customize the following variables:
     
     - `aws_access_key` - Amazon AWS Access Key
     - `aws_secret_key` - Amazon AWS Secret Key
