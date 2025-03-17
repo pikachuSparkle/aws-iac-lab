@@ -135,8 +135,14 @@ Write-only arguments are available in Terraform 1.11 and later.
 
 ## Create RDS instance
 
-In your terminal, initialize the Terraform configuration to install the module and providers used in this tutorial.
+Change proper region for your aws account in `variables.tf`
+```
+variable "region" {
+  description = "AWS region for all resources."
+  default     = "us-east-1"
+```
 
+In your terminal, initialize the Terraform configuration to install the module and providers used in this tutorial.
 ```
 terraform init
 ```
@@ -192,6 +198,7 @@ Connect to your database to inspect your records.
 
 ```shell
 psql -h $(terraform output -raw rds_hostname) -U $(terraform output -raw rds_username) postgres
+
 psql (16.3, server 15.5)
 SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, compression: off)
 Type "help" for help.
