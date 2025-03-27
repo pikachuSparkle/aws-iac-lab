@@ -33,7 +33,9 @@ If minikube fails to start, see the [drivers page](https://minikube.sigs.k8s.io
 
 If you already have kubectl installed (see [documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/)), you can now use it to access your shiny new cluster:
 ```
-#install kubectl, then
+# install kubectl
+# https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+# then
 kubectl get po -A
 ```
 
@@ -51,8 +53,6 @@ Initially, some services such as the storage-provisioner, may not yet be in a Ru
 ```shell
 minikube dashboard
 ```
-
-
 
 ## 4. Deploy applications
 
