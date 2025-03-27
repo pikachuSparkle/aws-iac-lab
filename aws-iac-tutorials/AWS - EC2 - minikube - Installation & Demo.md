@@ -8,14 +8,30 @@ https://kubernetes.io/docs/tutorials/hello-minikube/
 
 ## 0. Prerequisites
 
-- 2 CPUs or more
-- 2GB of free memory
-- 20GB of free disk space
+- 2 CPUs or more & 2GB of free memory & 20GB of free disk space
 - Internet connection
+- OS Amazon Linux 2023, ec2-user
 - Container or virtual machine manager, such as: [Docker](https://minikube.sigs.k8s.io/docs/drivers/docker/), [QEMU](https://minikube.sigs.k8s.io/docs/drivers/qemu/), [Hyperkit](https://minikube.sigs.k8s.io/docs/drivers/hyperkit/), [Hyper-V](https://minikube.sigs.k8s.io/docs/drivers/hyperv/), [KVM](https://minikube.sigs.k8s.io/docs/drivers/kvm2/), [Parallels](https://minikube.sigs.k8s.io/docs/drivers/parallels/), [Podman](https://minikube.sigs.k8s.io/docs/drivers/podman/), [VirtualBox](https://minikube.sigs.k8s.io/docs/drivers/virtualbox/), or [VMware Fusion/Workstation](https://minikube.sigs.k8s.io/docs/drivers/vmware/)
 
 ## 1. Installation
 
+Docker install
+```shell
+sudo dnf install docker
+sudo systemctl start docker
+```
+
+To grant the `ec2-user` permission to use Docker commands, you need to add the user to the `docker` group. Here’s how you can do it:
+```shell
+sudo usermod -aG docker ec2-user
+# Log Out and Back In
+groups ec2-user
+# Output:
+# ec2-user : ec2-user adm wheel systemd-journal docker
+docker ps
+```
+
+minikube Install
 Linux->x86-64->Stable->Binary download
 To install the latest minikube **stable** release on **x86-64** **Linux** using **binary download**:
 ```shell
@@ -32,7 +48,7 @@ If minikube fails to start, see the [drivers page](https://minikube.sigs.k8s.io
 ## 3. Interact with your cluster
 
 If you already have kubectl installed (see [documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/)), you can now use it to access your shiny new cluster:
-```
+```shell
 # install kubectl
 # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 # then
@@ -49,14 +65,19 @@ You can also make your life easier by adding the following to your shell config:
 alias kubectl="minikube kubectl --"
 ```
 
-Initially, some services such as the storage-provisioner, may not yet be in a Running state. This is a normal condition during cluster bring-up, and will resolve itself momentarily. For additional insight into your cluster state, minikube bundles the Kubernetes Dashboard, allowing you to get easily acclimated to your new environment:
+Initially, some services such as the storage-provisioner, may not yet be in a Running state. This is a normal condition during cluster bring-up, and will resolve itself momentarily. 
+For additional insight into your cluster state, minikube bundles the Kubernetes Dashboard, allowing you to get easily acclimated to your new environment:
 ```shell
 minikube dashboard
 ```
 
-## 4. Deploy applications
+```shell
+kubectl port-forward service/kubernetes-dashboard -n kubernetes-dashboard 38595:80 --address 0.0.0.0
+```
 
-#### 4.1 Service
+## 4. Deploy Demo Applications 
+
+#### 4.1 Demo1 - Service
 
 https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/
 Create a sample deployment and expose it on port 8080:
@@ -84,7 +105,7 @@ Your application is now available at [http://localhost:7080/](http://localhost:
 
 You should be able to see the request metadata in the application output. Try changing the path of the request and observe the changes. Similarly, you can do a POST request and observe the body show up in the output.
 
-#### 4.2 LoadBalancer
+#### 4.2 Demo2 - LoadBalancer
 
 https://minikube.sigs.k8s.io/docs/handbook/accessing/#loadbalancer-access
 To access a LoadBalancer deployment, use the “minikube tunnel” command. Here is an example deployment:
@@ -106,7 +127,7 @@ kubectl get services balanced
 
 Your deployment is now available at `<EXTERNAL-IP>:8080`
 
-#### 4.3 Ingress
+#### 4.3 Demo3 - Ingress
 https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 Enable ingress addon:
 ```shell
