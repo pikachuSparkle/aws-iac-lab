@@ -1,9 +1,10 @@
 ## 0. DOCS
 
-这俩包含了prometheus和grafana
+prometheus & grafana included (no exportor)
 https://archive.eksworkshop.com/intermediate/240_monitoring/deploy-prometheus/
 https://navyadevops.hashnode.dev/setting-up-prometheus-and-grafana-on-amazon-eks-for-kubernetes-monitoring
-这个资料有点老了，整体流程是对的
+
+Overall pressures (a bit out dated)
 https://dev.to/aws-builders/monitoring-eks-cluster-with-prometheus-and-grafana-1kpb
 
 ## 1. EKS Cluster & aws-ebs-driver-driver Deployment
