@@ -1,7 +1,8 @@
 
 ## Get Started and Fix Source Bugs
 
-This tutorial is based on hashicorp official DOCS [ASG tutorial for AWS services](https://developer.hashicorp.com/terraform/tutorials/aws/aws-asghashicorp) and  [GitHub](https://github.com/hashicorp-education/learn-terraform-aws-asg)
+This tutorial is based on hashicorp official DOCS [ASG tutorial for AWS services](https://developer.hashicorp.com/terraform/tutorials/aws/aws-asg) and  [GitHub](https://github.com/hashicorp-education/learn-terraform-aws-asg)
+
 But as the time flows, there is some new problems need to be fixed as follows:
 1. AMI "amzn-ami-hvm-*-x86_64-ebs" no longer exists
 2. Resource `aws_launch_configuration` not supported in AWS from **October 1, 2024**. You can reference the [AWS official DOCS](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html)
@@ -74,7 +75,7 @@ Here, AMI `amzn-ami-2018.03.20250224-amazon-ecs-optimized` will be used in the e
 
 A **launch template** specifies the EC2 instance configuration that an ASG will use to launch each new instance.
 
-Resource aws_launch_configuration are not supported in AWS. You can reference terraform aws provider documents:
+Resource aws_launch_configuration are not supported in AWS now. You can reference terraform aws provider documents:
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
 It offers the knowledge of how to configure a EC2 Template for ASG.
 ```
