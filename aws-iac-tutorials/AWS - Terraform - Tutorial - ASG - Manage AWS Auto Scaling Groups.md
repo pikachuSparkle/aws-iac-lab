@@ -1,14 +1,14 @@
 
-## Get Started and Fix Source Bugs
+## Get Started and Fix Launch Configuration deprecated problem
 
 This tutorial is based on hashicorp official DOCS [ASG tutorial for AWS services](https://developer.hashicorp.com/terraform/tutorials/aws/aws-asg) and  [GitHub](https://github.com/hashicorp-education/learn-terraform-aws-asg)
 
-But as the time flows, there is some new problems need to be fixed as follows:
+As the time flows, there is some new problems need to be fixed as follows:
 1. AMI "amzn-ami-hvm-*-x86_64-ebs" no longer exists
 2. Resource `aws_launch_configuration` not supported in AWS from **October 1, 2024**. You can reference the [AWS official DOCS](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html)
 
-In this tutorial, the above problems have been resolved. And you have two methods to deploy the codes and validate.
-1. Obtain from my GitHub repo:
+In this tutorial, the above problems have been resolved. And you have two methods to validate the codes.
+1. Obtain from my personal GitHub repo:
 ```shell
 git clone https://github.com/pikachuSparkle/learn-terraform-aws-asg.git
 cd learn-terraform-aws-asg
@@ -17,7 +17,6 @@ terraform init
 terraform apply
 ```
 2. Check the hashicorp official GitHub repo and fix the problem manually. I have commit the [fixed codes](https://github.com/hashicorp-education/learn-terraform-aws-asg/pull/20)
-
 ## Validate
 
 Outputs:
@@ -30,10 +29,8 @@ lb_endpoint = "http://learn-asg-terramino-lb-1572171601.us-east-1.elb.amazonaws.
 ```
 
 Visit `application_endpoint` and `lb_endpoint` with your browser.
-
 && 
-
-Use `cURL` to send a request to the `lb_endpoint` output, which reports the instance ID of the EC2 instance responding to your request.
+Use `cURL` command to send a request to the `lb_endpoint` output, which reports the instance ID of the EC2 instance responding to your request.
 
 ```
 $ curl $(terraform output -raw lb_endpoint)
@@ -42,11 +39,11 @@ i-0735ecca64f49e5e1
 
 Then, visit the address in the `application_endpoint` output value in your browser to test out your application.
 
-## Review configuration
+## Code Review
 
-In your code editor, open the `main.tf` file to review the configuration in this repository.
+In your code editor, open the `main.tf` file to review the configuration codes in this repository.
 
-#### Search your AMI
+#### AMI Searching
 
 With aws command utility, you can search specified AMI with following shell scripts. 
 ```shell
@@ -75,7 +72,9 @@ Here, AMI `amzn-ami-2018.03.20250224-amazon-ecs-optimized` will be used in the e
 
 A **launch template** specifies the EC2 instance configuration that an ASG will use to launch each new instance.
 
-Resource aws_launch_configuration are not supported in AWS now. You can reference terraform aws provider documents:
+NOTES:
+Resource aws_launch_configuration are not supported in AWS now. 
+You can reference terraform aws provider documents:
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
 It offers the knowledge of how to configure a EC2 Template for ASG.
 ```
@@ -95,7 +94,7 @@ resource "aws_launch_template" "terramino" {
 
 ```
 
-- a user data script, which configures the instances to run the `user-data.sh` file in this repository at launch time. The user data script installs dependencies and initializes Terramino, a Terraform-skinned Tetris application.
+- a user data script, which configures the instances to run the `user-data.sh` file in this repository at launch time. The user data script installs dependencies and initializes `Terramino`, a Terraform-skinned Tetris application.
 - an Amazon Linux AMI specified by a data source.
 - a security group to associate with the instances. The security group (defined later in this file) allows ingress traffic on port 80 and egress traffic to all endpoints.
 
@@ -141,7 +140,7 @@ resource "aws_autoscaling_group" "terramino" {
 This ASG configuration sets:
 - a list of subnets where the ASGs will launch new instances. This configuration references the public subnets created by the `vpc` module.
 
-#### Load balancer resources
+#### Load Balancer Resources
 
 Since you will launch multiple instances running your Terramino application, you must provision a load balancer to distribute traffic across the instances.
 
