@@ -39,6 +39,64 @@ output "elastic_ip" {
 
 Visit `http://public_ip` && get the welcome page
 
+Check the instance info -- `IMDSv2`（Instance Metadata Service Version 2）
+
+command:
+```
+curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"
+```
+
+```
+export TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+```
+
+```
+curl -H "X-aws-ec2-metadata-token: $TOKEN" "http://169.254.169.254/latest/meta-data/"
+```
+
+output:
+```
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+events/
+hibernation/
+hostname
+identity-credentials/
+instance-action
+instance-id
+instance-life-cycle
+instance-type
+local-hostname
+local-ipv4
+mac
+managed-ssh-keys/
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+system
+```
+
+command:
+```
+curl -H "X-aws-ec2-metadata-token: $TOKEN" "http://169.254.169.254/latest/meta-data/ami-id
+```
+
+output:
+```
+ami-005fc0f236362e99f
+```
+
+
+
 ## Code Review
 
 ```
