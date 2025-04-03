@@ -7,6 +7,7 @@ As the time flows, there is some new problems need to be fixed as follows:
 1. AMI "amzn-ami-hvm-*-x86_64-ebs" no longer exists
 2. Resource `aws_launch_configuration` not supported in AWS from **October 1, 2024**. You can reference the [AWS official DOCS](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html)
 
+## Obtain the Source Code
 In this tutorial, the above problems have been resolved. And you have two methods to validate the codes.
 1. Obtain from my personal GitHub repo:
 ```shell
