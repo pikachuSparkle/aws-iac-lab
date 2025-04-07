@@ -87,7 +87,7 @@ system
 
 command:
 ```
-curl -H "X-aws-ec2-metadata-token: $TOKEN" "http://169.254.169.254/latest/meta-data/ami-id
+curl -H "X-aws-ec2-metadata-token: $TOKEN" "http://169.254.169.254/latest/meta-data/ami-id"
 ```
 
 output:
@@ -122,3 +122,9 @@ This code snippet is a Terraform configuration for creating an AWS Elastic IP (E
 #### Purpose:
 - The code binds a static Elastic IP to the EC2 instance named `web`, enabling the instance to maintain the same public IP address even if it is stopped or restarted.
 - It ensures consistent connectivity for services hosted on the instance, particularly useful when you require a fixed public IP for accessing or configuring external services.
+
+## Release Resources
+
+```
+terraform destroy
+```
