@@ -1,5 +1,5 @@
 
-## Check available AMIs
+## SSM - Check available AMIs
 
 command:
 ```
@@ -37,7 +37,7 @@ output:
 ]
 ```
 
-## Check Specified AMI  
+## SSM - Check Specified AMI  
 
 command:
 ```
@@ -155,6 +155,103 @@ output:
             "VirtualizationType": "hvm",
             "BootMode": "uefi-preferred",
             "DeprecationTime": "2026-07-01T16:36:59.000Z"
+        }
+    ]
+}
+```
+
+## Find Specified AMI in different region
+
+#### Find version  according to AMI ID & region
+
+```
+aws ec2 describe-images --image-ids ami-02f624c08a83ca16f --region us-east-1
+```
+
+```
+{
+    "Images": [
+        {
+            "Architecture": "x86_64",
+            "CreationDate": "2025-03-21T23:44:07.000Z",
+            "ImageId": "ami-02f624c08a83ca16f",
+            "ImageLocation": "amazon/amzn2-ami-kernel-5.10-hvm-2.0.20250321.0-x86_64-gp2",
+            "ImageType": "machine",
+            "Public": true,
+            "OwnerId": "137112412989",
+            "PlatformDetails": "Linux/UNIX",
+            "UsageOperation": "RunInstances",
+            "State": "available",
+            "BlockDeviceMappings": [
+                {
+                    "DeviceName": "/dev/xvda",
+                    "Ebs": {
+                        "DeleteOnTermination": true,
+                        "SnapshotId": "snap-0cc602f2182e094de",
+                        "VolumeSize": 8,
+                        "VolumeType": "gp2",
+                        "Encrypted": false
+                    }
+                }
+            ],
+            "Description": "Amazon Linux 2 Kernel 5.10 AMI 2.0.20250321.0 x86_64 HVM gp2",
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "ImageOwnerAlias": "amazon",
+            "Name": "amzn2-ami-kernel-5.10-hvm-2.0.20250321.0-x86_64-gp2",
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SriovNetSupport": "simple",
+            "VirtualizationType": "hvm",
+            "DeprecationTime": "2025-07-01T00:00:00.000Z"
+        }
+    ]
+}
+```
+
+
+#### Find AMI ID according to version & region
+
+```
+aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn2-ami-kernel-5.10-hvm-2.0.20250321.0-x86_64-gp2" --region us-east-1
+```
+
+```
+{
+    "Images": [
+        {
+            "Architecture": "x86_64",
+            "CreationDate": "2025-03-21T23:44:07.000Z",
+            "ImageId": "ami-02f624c08a83ca16f",
+            "ImageLocation": "amazon/amzn2-ami-kernel-5.10-hvm-2.0.20250321.0-x86_64-gp2",
+            "ImageType": "machine",
+            "Public": true,
+            "OwnerId": "137112412989",
+            "PlatformDetails": "Linux/UNIX",
+            "UsageOperation": "RunInstances",
+            "State": "available",
+            "BlockDeviceMappings": [
+                {
+                    "DeviceName": "/dev/xvda",
+                    "Ebs": {
+                        "DeleteOnTermination": true,
+                        "SnapshotId": "snap-0cc602f2182e094de",
+                        "VolumeSize": 8,
+                        "VolumeType": "gp2",
+                        "Encrypted": false
+                    }
+                }
+            ],
+            "Description": "Amazon Linux 2 Kernel 5.10 AMI 2.0.20250321.0 x86_64 HVM gp2",
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "ImageOwnerAlias": "amazon",
+            "Name": "amzn2-ami-kernel-5.10-hvm-2.0.20250321.0-x86_64-gp2",
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SriovNetSupport": "simple",
+            "VirtualizationType": "hvm",
+            "DeprecationTime": "2025-07-01T00:00:00.000Z"
         }
     ]
 }
