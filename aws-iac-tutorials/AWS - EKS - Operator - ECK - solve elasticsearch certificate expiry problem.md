@@ -93,7 +93,7 @@ curl -u "elastic:BBBBBBBBBBBBBBBBBBBBB" -k "https://127.0.0.1:9200/_ssl/certific
 - ECK 1.24 + ElasticSearch 8.15
 
 ## Create EKS Cluster
-[[AWS - EKSCTL - EKS Cluster Deployment with EKSCTL]]
+[[AWS - EKSCTL - Deployment EKS Cluster]]
 
 ## aws-ebs-csi-driver Installation
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]

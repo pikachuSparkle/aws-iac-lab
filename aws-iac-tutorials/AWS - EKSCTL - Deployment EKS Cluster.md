@@ -2,13 +2,13 @@
 ## 1. Deployment Approaches：
 
 There are three approaches to create EKS Cluster in AWS.
-#### 1.1 Approache 1 - AWS dashboard 
+#### 1.1 Approach 1 - AWS dashboard 
 
 > **Elastic Kubernetes Service | Deploy a sample application**
 > https://www.youtube.com/watch?v=I6yqVBhNXxY
 > **Elastic Kubernetes Service | Application Load Balancing on EKS**
 > https://www.youtube.com/watch?v=ZGKaSboqKzk&list=PLLuj64lk0VU7v9TTWPLQ2EePdOQCJSL_D&index=32
-#### 1.2 Approach 2 - eksctl Deployment
+#### 1.2 Approach 2 - EKSCTL Deployment
 
 Following this article
 #### 1.3 Approach 3 - Terraform Deployment
