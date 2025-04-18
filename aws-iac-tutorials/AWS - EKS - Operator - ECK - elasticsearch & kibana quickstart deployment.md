@@ -171,24 +171,6 @@ kubectl port-forward service/quickstart-kb-http 5601
 ```
 kubectl get secret quickstart-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 ```
-#### Upgrade your deployment
-https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-upgrade-deployment.html
-```
-cat <<EOF | kubectl apply -f -
-apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
-metadata:
-  name: quickstart
-spec:
-  version: 8.15.0
-  nodeSets:
-  - name: default
-    count: 3
-    config:
-      node.store.allow_mmap: false
-EOF
-```
-
 
 ## Next 
 https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-orchestrating-elastic-stack-applications.html
