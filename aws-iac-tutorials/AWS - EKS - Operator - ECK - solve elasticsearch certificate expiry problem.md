@@ -101,7 +101,7 @@ curl -u "elastic:BBBBBBBBBBBBBBBBBBBBB" -k "https://127.0.0.1:9200/_ssl/certific
 ## ECK Operator & ElasticSearch Deployment
 [[AWS - EKS - Operator - ECK - elasticsearch & kibana quickstart deployment]]
 
-## Prepare the testbed
+## Validate the testbed
 
 ```
 PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
