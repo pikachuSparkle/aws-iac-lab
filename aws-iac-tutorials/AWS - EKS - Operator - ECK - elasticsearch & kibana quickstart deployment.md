@@ -1,5 +1,6 @@
 ## DOCS:
-https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html
+https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s/deploy-an-orchestrator
+https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s/manage-deployments
 
 ## Platform:
 in this scenario, using the most simple tools locap-path provisioner and ingress-nginx
