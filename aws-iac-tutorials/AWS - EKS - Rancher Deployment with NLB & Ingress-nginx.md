@@ -5,7 +5,7 @@ https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade
 
 ## 1. Create [EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
 
-[[AWS - EKS - EKS Cluster Deployment with eksctl]]
+[[AWS - EKSCTL - EKS Cluster Deployment with EKSCTL]]
 
 ## 2. Install Ingress-nginx
 

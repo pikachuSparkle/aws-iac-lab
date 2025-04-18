@@ -1,25 +1,3 @@
-
-## EKS scale nodes of nodeGroup  
-
-Check the nodegroup's status
-```
-eksctl get nodegroup --cluster=cluster-demo-1 --region=us-east-1
-
-eksctl get nodegroup --cluster cluster-demo-1 --region us-east-1 --name demo-nodeGroup-1
-```
-
-Scale the nodes
-```
-eksctl scale nodegroup --cluster=<cluster-name> --name=<nodegroup-name> --nodes=<desired-size> --nodes-min=<min-size> --nodes-max=<max-size> --region=us-east-1
-
-eksctl scale nodegroup --cluster=cluster-demo-1  --name=demo-nodeGroup-1 --nodes=2  --nodes-min=2 --nodes-max=2  --region=us-east-1
-```
-
-Check again & validate
-```
-eksctl get nodegroup --cluster=cluster-demo-1 --region=us-east-1
-```
-
 ## DOCS:
 https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html
 
@@ -30,19 +8,23 @@ in this scenario, using the most simple tools locap-path provisioner and ingress
 - storageClassName local-path
 - [[AWS - EKS - Ingress Controller - NLB & Ingress-nginx]]
 
+## Testbed Provisioning
 
-Setup Cluster
-[[AWS - EKS - EKS Cluster Deployment with eksctl]]
+1. Setup Cluster
+[[AWS - EKSCTL - EKS Cluster Deployment with EKSCTL]]
 
-Install [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
+2. Install [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
 ```
 kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.28/deploy/local-path-storage.yaml
 ```
 
-Install [metrics server](https://github.com/kubernetes-sigs/metrics-server)
+3. Install [metrics server](https://github.com/kubernetes-sigs/metrics-server)
 ```
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
+
+4. Scaling out EKS nodeGroup 
+[[AWS - EKSCTL - Scaling Out EKS nodeGroup]]
 
 ## Elasticsearch Deployment
 
@@ -204,12 +186,6 @@ spec:
     config:
       node.store.allow_mmap: false
 EOF
-```
-
-#### Check out the samples
-https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-check-samples.html
-```
-kubectl describe crd elasticsearch
 ```
 
 

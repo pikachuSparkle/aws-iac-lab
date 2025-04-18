@@ -6,7 +6,7 @@ https://dev.to/aws-builders/setup-rancher-on-eks-alb-50
 
 ## 1. Create [EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
 
-[[AWS - EKS - EKS Cluster Deployment with eksctl]]
+[[AWS - EKSCTL - EKS Cluster Deployment with EKSCTL]]
 
 ## 2. Install [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-install-controller)
 
