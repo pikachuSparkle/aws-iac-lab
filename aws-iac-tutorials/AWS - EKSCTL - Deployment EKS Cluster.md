@@ -85,7 +85,7 @@ eksctl create cluster -f cluster.yaml
 NOTES:
 - The Dafault Disk is 80G, tunning the disk size to 20G.
 - `NAT GATEWAY` will be created by default, which will be charged. The "NAT GATEWAY" is utilized for helping `EC2 instances` in `private subnet` to visit the public internet (inbound direction is not allowed, whick is the best practise for EKS). [[AWS - Concepts - NAT Gateway]]
-- eksctl will create EC2 instances in `public subnet`. Hence, opening `NAT GATEWAY` is no need. Dev environment could tolerate less security for saving money.
+- eksctl will create EC2 instances in `public subnet`. Hence, opening `NAT GATEWAY` is not needed. Dev environment could tolerate less security for saving money.
 
 
 #### 2.3 Validate with Application
