@@ -88,9 +88,10 @@ curl -u "elastic:BBBBBBBBBBBBBBBBBBBBB" -k "https://127.0.0.1:9200/_ssl/certific
 ```
 ## Prerequisites:
 
-- AWS EKS 1.30
+- AWS EKS 1.32
 - aws-ebs-csi-driver
-- ECK 1.24 + ElasticSearch 8.15
+- ECK 1.24 
+- Elasticsearch 8.15
 
 ## Create EKS Cluster
 [[AWS - EKSCTL - EKS Cluster Deployment]]

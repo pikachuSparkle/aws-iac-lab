@@ -9,11 +9,9 @@ There are three approaches to create EKS Cluster in AWS.
 > **Elastic Kubernetes Service | Application Load Balancing on EKS**
 > https://www.youtube.com/watch?v=ZGKaSboqKzk&list=PLLuj64lk0VU7v9TTWPLQ2EePdOQCJSL_D&index=32
 #### 1.2 Approach 2 - EKSCTL Deployment
-
 Following this article
 #### 1.3 Approach 3 - Terraform Deployment
-
-Following [[AWS - Terraform - EKS - Istio - 1. Getting Started with Istio on Amazon EKS]]
+[[AWS - Terraform - EKS - Istio - 1. Getting Started with Istio on Amazon EKS]]
 
 ## 2. eksctl Tool Binary Installation
 
@@ -59,7 +57,7 @@ kind: ClusterConfig
 metadata:
   name: cluster-demo-1
   region: us-east-1
-  version: "1.30"
+  version: "1.32"
 
 vpc:
   nat:
@@ -88,14 +86,10 @@ NOTES:
 - eksctl will create EC2 instances in `public subnet`. Hence, opening `NAT GATEWAY` is not needed. Dev environment could tolerate less security for saving money.
 
 
-## 4. Validate with Application
+## 4. Validate metrics-server addon
 
-install `metrices-server` application
-- [AWS DOCS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)
-- [Metrics Server Github](https://github.com/kubernetes-sigs/metrics-server)
 ```shell
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-kubectl get deployment metrics-server -n kube-system
+kubectl get pod -A
 kubectl top nodes
 ```
 
@@ -117,4 +111,3 @@ kubectl get pdb -n kube-system
 kubectl delete pdb coredns -n kube-system
 eksctl delete cluster --name=<name> --region=<region>
 ```
-

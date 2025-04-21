@@ -30,10 +30,10 @@ eksctl create iamserviceaccount \
 
 You may deploy the EBS CSI driver via Kustomize, Helm, or as an [Amazon EKS managed add-on](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html).
 
-#### 2.1 使用add-on的方式
-参考DOCS
-https://navyadevops.hashnode.dev/setting-up-prometheus-and-grafana-on-amazon-eks-for-kubernetes-monitoring
+#### 2.1 add-on Approach
 
+DOCS:
+https://navyadevops.hashnode.dev/setting-up-prometheus-and-grafana-on-amazon-eks-for-kubernetes-monitoring
 
 To improve security and reduce the amount of work, you can manage the Amazon EBS CSI driver as an Amazon EKS add-on.
 
@@ -59,7 +59,8 @@ eksctl update addon --name aws-ebs-csi-driver --version v1.11.4-eksbuild.1 --clu
   --service-account-role-arn arn:aws:iam::444444444444:role/AmazonEKS_EBS_CSI_DriverRole --force
 ```
 
-#### 2.2 使用helm的方式
+#### 2.2 Helm Approach
+
 ```
 helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
 helm repo update
@@ -77,7 +78,7 @@ Configure value, 见下面的文件。重要，可以根据这个调整helm inst
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/charts/aws-ebs-csi-driver/values.yaml
 ```
 
-## 3. Check
+## 3. Validate
 
 ```
 kubectl get pods -n kube-system -l app.kubernetes.io/name=aws-ebs-csi-driver

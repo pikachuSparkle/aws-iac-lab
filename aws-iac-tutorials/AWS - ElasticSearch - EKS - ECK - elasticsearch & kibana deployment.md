@@ -19,17 +19,10 @@ in this scenario, using the most simple tools locap-path provisioner and ingress
 kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.28/deploy/local-path-storage.yaml
 ```
 
-3. Install [metrics server](https://github.com/kubernetes-sigs/metrics-server)
-```
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-```
-
-4. Scaling out EKS nodeGroup 
+3. Scaling out EKS nodeGroup 
 [[AWS - EKSCTL - EKS nodeGroup Scaling Out]]
 
-## Elasticsearch Deployment
-
-#### Deploy ECK in your Kubernetes cluster
+## Deploy ECK in your Kubernetes cluster
 https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-eck.html
 
 ```
@@ -54,7 +47,7 @@ kubectl apply -f https://download.elastic.co/downloads/eck/2.14.0/operator.yaml
 ```
 kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
 ```
-#### Deploy an Elasticsearch cluster
+## Deploy an Elasticsearch cluster
 https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html
 
 ```
@@ -135,7 +128,7 @@ curl -u "elastic:$PASSWORD" -k "https://localhost:9200"
 }
 ```
 
-#### Deploy a Kibana instance
+## Deploy a Kibana instance
 https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html
 
 ```
