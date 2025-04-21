@@ -12,7 +12,7 @@ in this scenario, using the most simple tools locap-path provisioner and ingress
 ## Testbed Provisioning
 
 1. Setup Cluster
-[[AWS - EKSCTL - Deployment EKS Cluster]]
+[[AWS - EKSCTL - EKS Cluster Deployment]]
 
 2. Install [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
 ```
@@ -25,7 +25,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 ```
 
 4. Scaling out EKS nodeGroup 
-[[AWS - EKSCTL - Scaling Out EKS NodeGroup]]
+[[AWS - EKSCTL - EKS nodeGroup Scaling Out]]
 
 ## Elasticsearch Deployment
 

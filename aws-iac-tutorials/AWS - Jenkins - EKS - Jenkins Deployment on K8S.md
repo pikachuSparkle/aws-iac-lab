@@ -3,7 +3,7 @@ https://vocus.cc/article/65b74e54fd89780001fb1221
 
 ## 1.  Create the EKS cluster & Amazon EBS CSI driver
 
-[[AWS - EKSCTL - Deployment EKS Cluster]]
+[[AWS - EKSCTL - EKS Cluster Deployment]]
 
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 

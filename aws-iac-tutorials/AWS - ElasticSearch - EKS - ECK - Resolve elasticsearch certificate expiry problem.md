@@ -1,11 +1,11 @@
 ## NOTES:
-- Operator is "controller" of the es cluster.
-- Operator has the knowledge of maintances.
+- Operator is "controller" of the Elasticsearch cluster.
+- Operator has the knowledge of maintainers.
 - The specific logic need to be read in the operator codes...
 
-## Problem Describtion:
+## Problem Description:
 
-The ECK-based Elasticsearch cluster ssl certificates have expired and needs to be updated. This should be a bug of the ECK operator, because the certificate should be updated by the operator automatically.
+The ECK-based Elasticsearch cluster SSL certificates have expired and needs to be updated. This should be a bug of the ECK operator, because the certificate should be updated by the operator automatically.
 
 ```
 curl -u "elastic:BBBBBBBBBBBBBBBBBBBBB" -k "https://127.0.0.1:9200/_ssl/certificate"
@@ -93,7 +93,7 @@ curl -u "elastic:BBBBBBBBBBBBBBBBBBBBB" -k "https://127.0.0.1:9200/_ssl/certific
 - ECK 1.24 + ElasticSearch 8.15
 
 ## Create EKS Cluster
-[[AWS - EKSCTL - Deployment EKS Cluster]]
+[[AWS - EKSCTL - EKS Cluster Deployment]]
 
 ## aws-ebs-csi-driver Installation
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]

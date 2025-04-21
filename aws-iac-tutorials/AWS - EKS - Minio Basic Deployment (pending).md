@@ -1,6 +1,6 @@
 ## 1. Deploy EKS Cluster
 
-[[AWS - EKSCTL - Deployment EKS Cluster]]
+[[AWS - EKSCTL - EKS Cluster Deployment]]
 
 ## 2. Deploy aws-ebs-csi-driver
 
