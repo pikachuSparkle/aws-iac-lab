@@ -88,7 +88,7 @@ NOTES:
 - eksctl will create EC2 instances in `public subnet`. Hence, opening `NAT GATEWAY` is not needed. Dev environment could tolerate less security for saving money.
 
 
-#### 2.3 Validate with Application
+## 4. Validate with Application
 
 install `metrices-server` application
 - [AWS DOCS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)
@@ -99,13 +99,13 @@ kubectl get deployment metrics-server -n kube-system
 kubectl top nodes
 ```
 
-#### 2.4 Terminate EKS Cluster with eksctl
+## 5. Terminate EKS Cluster with eksctl
 
 ```shell
 eksctl delete cluster --name=<name> --region=<region>
 ```
 
-#### 2.5 TroubleShooting
+## 6. Troubleshooting
 
 - Error
 ```
