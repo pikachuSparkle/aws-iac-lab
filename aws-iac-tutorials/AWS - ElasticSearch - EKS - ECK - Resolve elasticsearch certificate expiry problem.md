@@ -100,7 +100,7 @@ curl -u "elastic:BBBBBBBBBBBBBBBBBBBBB" -k "https://127.0.0.1:9200/_ssl/certific
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ## ECK Operator & ElasticSearch Deployment
-[[AWS - ElasticSearch - EKS - ECK - Elasticsearch & Kibana deployment]]
+[[AWS - Elasticsearch - EKS - ECK - Elasticsearch & Kibana deployment]]
 
 ## Validate the testbed
 

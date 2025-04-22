@@ -170,5 +170,5 @@ kubectl port-forward service/quickstart-kb-http 5601
 kubectl get secret quickstart-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 ```
 
-## Next 
-https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s/managing-deployments-using-helm-chart
+## Next - Deploy Elastic Stack with Helm chart
+[[AWS - Elasticsearch - EKS - ECK - Deploy Elastic Stack with Helm Chart]]
