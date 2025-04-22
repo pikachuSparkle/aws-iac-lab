@@ -24,7 +24,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 aws-ebs-csi-driver
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
-#### c. Scaling out EKS nodeGroup 
+#### c. Scaling out EKS nodeGroup (Optional)
 [[AWS - EKSCTL - EKS nodeGroup Scaling Out]]
 
 ## Deploy ECK in your Kubernetes cluster
