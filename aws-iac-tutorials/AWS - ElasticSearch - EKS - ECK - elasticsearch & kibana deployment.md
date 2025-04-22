@@ -11,10 +11,10 @@ in this scenario, using the most simple tools locap-path provisioner and ingress
 
 ## Testbed Provisioning
 
-1. Setup Cluster
+#### a. Setup Cluster
 [[AWS - EKSCTL - EKS Cluster Deployment]]
 
-2. Install [local-path-provisioner](https://github.com/rancher/local-path-provisioner) or aws-ebs-csi-driver (suggested)
+#### b. Install [local-path-provisioner](https://github.com/rancher/local-path-provisioner) or aws-ebs-csi-driver (suggested)
 
 local-path-provisioner
 ```
@@ -24,7 +24,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisione
 aws-ebs-csi-driver
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
-3. Scaling out EKS nodeGroup 
+#### c. Scaling out EKS nodeGroup 
 [[AWS - EKSCTL - EKS nodeGroup Scaling Out]]
 
 ## Deploy ECK in your Kubernetes cluster
