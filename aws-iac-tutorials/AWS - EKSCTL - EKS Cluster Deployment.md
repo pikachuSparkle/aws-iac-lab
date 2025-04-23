@@ -65,9 +65,9 @@ vpc:
 
 nodeGroups:
   - name: demo-nodeGroup-1
-    instanceType: t3.medium
+    instanceType: t3a.medium
     minSize: 1
-    maxSize: 2
+    maxSize: 3
     desiredCapacity: 1
     volumeSize: 20
 ```
