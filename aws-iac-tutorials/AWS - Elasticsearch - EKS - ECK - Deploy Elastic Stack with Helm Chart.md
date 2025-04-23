@@ -18,11 +18,11 @@ The Elastic Stack (`eck-stack`) Helm chart is built on top of individual charts 
 ## Create EKS Cluster
 [[AWS - EKSCTL - EKS Cluster Deployment]]
 
-## aws-ebs-csi-driver Installation
+## Install aws-ebs-csi-driver
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
-## ECK Operator Deployment
-[[AWS - Elasticsearch - EKS - ECK - Elasticsearch & Kibana deployment]]
+## Deploy ECK Operator
+[[AWS - Elasticsearch - EKS - ECK - Deploy Elasticsearch cluster & Kibana instance]]
 
 ```
 kubectl create -f https://download.elastic.co/downloads/eck/3.0.0/crds.yaml
@@ -50,10 +50,16 @@ helm install eck-stack-with-logstash elastic/eck-stack \
 ```
 
 
+## Troubleshooting
 
-
-
+When you deploy the elastic-stack with above tutorial, a error will occur as follows:
 ```
 Error: INSTALLATION FAILED: 1 error occurred:
         * admission webhook "elastic-beat-validation-v1beta1.k8s.elastic.co" denied the request: Beat.beat.k8s.elastic.co "eck-stack-with-logstash-eck-beats" is invalid: [spec.daemonSet: Forbidden: Specify either daemonSet or deployment, not both, spec.deployment: Forbidden: Specify either daemonSet or deployment, not both, spec: Invalid value: v1beta1.BeatSpec{Type:"filebeat", Version:"9.0.0", ElasticsearchRef:v1.ObjectSelector{Namespace:"", Name:"", ServiceName:"", SecretName:""}, KibanaRef:v1.ObjectSelector{Namespace:"", Name:"", ServiceName:"", SecretName:""}, Image:"", Config:(*v1.Config)(0xc0000ab880), ConfigRef:(*v1.ConfigSource)(nil), SecureSettings:[]v1.SecretSource(nil), ServiceAccountName:"", DaemonSet:(*v1beta1.DaemonSetSpec)(0xc00062d888), Deployment:(*v1beta1.DeploymentSpec)(0xc00062dc08), Monitoring:v1.Monitoring{Metrics:v1.MetricsMonitoring{ElasticsearchRefs:[]v1.ObjectSelector(nil)}, Logs:v1.LogsMonitoring{ElasticsearchRefs:[]v1.ObjectSelector(nil)}}, RevisionHistoryLimit:(*int32)(nil)}: either daemonset or deployment must be specified]
 ```
+
+To fix this problem, the demo value file [basic-eck.yaml](https://raw.githubusercontent.com/elastic/cloud-on-k8s/3.0/deploy/eck-stack/examples/logstash/basic-eck.yaml) should delete `daemonSet: null` part. Also I have commit PR to the official GitHub repo, thr URL link is 
+https://github.com/elastic/cloud-on-k8s/pull/8618
+
+## Validate the stack
+
