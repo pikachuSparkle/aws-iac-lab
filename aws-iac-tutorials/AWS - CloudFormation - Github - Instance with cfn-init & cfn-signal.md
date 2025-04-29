@@ -11,7 +11,7 @@ ll ./InstanceWithCfnInit.yaml
 ```
 2. From this repo
 ```
-./CloudFormation_Codes/InstanceWithCfnInit.yaml
+ll ./CloudFormation_Codes/InstanceWithCfnInit.yaml
 ```
 
 >NOTES:
