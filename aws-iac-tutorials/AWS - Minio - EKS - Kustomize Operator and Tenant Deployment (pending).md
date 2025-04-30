@@ -5,15 +5,19 @@
 
 [[AWS - EKSCTL - EKS Cluster Deployment]]
 
+[[AWS - EKSCTL - EKS nodeGroup Scaling Out]] (Optional)
+
 ## 2. Deploy aws-ebs-csi-driver
 
 [[AWS - EKS - StorageClass - aws-ebs-csi-driver Installation]]
 
 ## 3. Install the MinIO Operator using Kustomize[^r1]
 
+https://min.io/docs/minio/kubernetes/eks/operations/installation.html
+
 The following command installs the Operator to the `minio-operator` namespace:
 ```
-kubectl apply -k "github.com/minio/operator?ref=v6.0.3"
+kubectl apply -k "github.com/minio/operator?ref=v7.1.1"
 ```
 
 Verify the Operator pods are running:
