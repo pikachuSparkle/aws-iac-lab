@@ -82,8 +82,9 @@ aws ecs list-task-definitions
 After you have registered a task for your account, you can create a service for the registered task in your cluster. For this example, you create a service with one instance of the `sample-fargate:1` task definition running in your cluster. The task requires a route to the internet, so there are two ways you can achieve this. One way is to use a private subnet configured with a NAT gateway with an elastic IP address in a public subnet. Another way is to use a public subnet and assign a public IP address to your task. We provide both examples below.
 
 Example using a public subnet.
+The `enable-execute-command` option is needed to use Amazon ECS Exec.
 ```
-aws ecs create-service --cluster fargate-cluster --service-name fargate-service --task-definition sample-fargate:1 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-abcd1234],securityGroups=[sg-abcd1234],assignPublicIp=ENABLED}"
+aws ecs create-service --cluster fargate-cluster --service-name fargate-service --task-definition sample-fargate:1 --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-abcd1234],securityGroups=[sg-abcd1234],assignPublicIp=ENABLED}"  --enable-execute-command
 ```
 
 ## Step 5: List Services
@@ -101,7 +102,7 @@ aws ecs describe-services --cluster fargate-cluster --services fargate-service
 ```
 
 ## Step 7: Test & Validate
-#### Testing task deployed using public subnet
+#### 7.1 Testing task deployed using public subnet
 Describe the task in the service so that you can get the Elastic Network Interface (ENI) for the task.
 
 First, get the task ARN.
@@ -143,6 +144,38 @@ Amazon ECS Sample App
 Congratulations!
 Your application is now running on a container in Amazon ECS.
 ```
+
+#### 7.2 Validate the ECS Exec tool
+
+Describe the task and locate `managedAgents` to verify that the `ExecuteCommandAgent` is running. Note the `privateIPv4Address` for later use.
+```
+aws ecs describe-tasks --cluster fargate-cluster --tasks arn:aws:ecs:us-east-1:123456789012:task/fargate-service/EXAMPLE
+```
+
+After verifying that the `ExecuteCommandAgent` is running, you can run the following command to run an interactive shell on the container in the task.
+```
+  aws ecs execute-command --cluster fargate-cluster \
+      --task  arn:aws:ecs:us-east-1:123456789012:task/fargate-service/EXAMPLE  \
+      --container  fargate-app \
+      --interactive \
+      --command "/bin/sh"
+```
+
+After the interactive shell is running, run the following commands to install cURL.
+```
+apt update 
+```
+
+```
+apt install curl 
+```
+
+```
+ curl 10.0.143.156 
+```
+
+You should see the HTML equivalent of the **Amazon ECS** sample application webpage.
+
 ## Step 8: Clean Up
 
 Delete the service.
