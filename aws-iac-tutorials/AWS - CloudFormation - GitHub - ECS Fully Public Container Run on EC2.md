@@ -15,20 +15,20 @@ ll ./services/public-service.yaml
 Obtain the source code from [pikachuSparkle](https://github.com/pikachuSparkle) GitHub
 ```
 https://github.com/pikachuSparkle/aws-iac-lab.git
-cd ./aws-iac-lab/CloudFormation_Codes/ECS/
+cd ./aws-iac-lab/CloudFormation_Codes/ECS/EC2LaunchType/
 ll ./clusters/public-vpc.yaml
 ll ./services/public-service.yaml
 ```
 
 Apply the above template in AWS CloudFormation dashboard 
 
-## Architeccture
+## Architecture
 
 This architecture deploys your container into its own VPC, inside a public facing network subnet. The containers are hosted with direct access to the internet, and they are also accessible to other clients on the internet via a public facing application load balancer.
 
 ![[public-task-public-loadbalancer.svg]]
 
-## Run in AWS Fargate
+## Run in AWS EC2
 
 1. Launch the `fully public` (`public-vpc.yaml`) or the `public + private` cluster template
 2. Launch the `public facing service template` (`public-service.yaml`).
