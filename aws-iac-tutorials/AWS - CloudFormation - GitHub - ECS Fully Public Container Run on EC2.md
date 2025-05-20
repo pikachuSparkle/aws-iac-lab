@@ -2,7 +2,7 @@
 
 https://github.com/aws-cloudformation/aws-cloudformation-templates/blob/main/ECS/README.md
 
-## SOURCE Obtian - Fully Public Container
+## SOURCE Obtain - Fully Public Container
 
 Obtain the source code from AWS GitHub
 ```
