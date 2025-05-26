@@ -4,7 +4,7 @@
 
 ## 1. Server Node Installation
 
-[[AWS - EC2 - RKE2 - 1 - Server Node Installation]]
+[[AWS - Rancher - EC2 - RKE2 - 1 - Server Node Installation]]
 
 ---
 NOTES 1：
@@ -30,7 +30,7 @@ source .profile
 
 ## 2. Linux Agent Node Installation
 
-[[AWS - EC2 - RKE2 - 2 - Agent (Worker) Node Installation]]
+[[AWS - Rancher - EC2 - RKE2 - 2 - Agent (Worker) Node Installation]]
 
 ## 3. Tunning the RKE Cluster
 

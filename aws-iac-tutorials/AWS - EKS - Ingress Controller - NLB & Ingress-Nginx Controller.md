@@ -27,7 +27,7 @@ ingress-nginx-controller   LoadBalancer   10.100.90.18   a904a952c73bf4f668a17c4
 ```
 
 注意：
-- Ingress-nginx Controller 必须使用secret的方式使用tls证书，不能使用alb那种引用AWS的arn的方式。
+- Ingress-Nginx Controller 必须使用secret的方式使用tls证书，不能使用alb那种引用AWS的arn的方式。
 - https://letsencrypt.org/ 通过这个可以申请3个月的免费证书，详见[[Let's Encrypt Certificate Application]]
 
 ## Installation with helm
