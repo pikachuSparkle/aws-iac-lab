@@ -50,9 +50,9 @@ helm install cert-manager jetstack/cert-manager   --namespace cert-manager   --c
 #安装Rancher需要和K3S的版本匹配，需要cert-manager版本匹配
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
-  --set hostname=184.72.120.207.sslip.io \
+  --set hostname=PublicIp.sslip.io \
   --set replicas=1 \
-  --set bootstrapPassword=bootstrap@Password
+  --set bootstrapPassword=XXXXXXXX
 ```
 
 #### 5. Validate
