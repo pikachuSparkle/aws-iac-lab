@@ -1,6 +1,6 @@
 
 
-这是agrocd的测试案例中guestbook的ingress配置案例
+This is the `guestbook` example ingress configuration in ArgoCD's test cases.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
