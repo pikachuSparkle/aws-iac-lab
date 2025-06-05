@@ -22,6 +22,7 @@ The Amazon ECS construct used in this example helps you use AWS services by prov
 
 ## Prerequisites
 
+- Node.js 22.16.0
 - Python 3.11.8
 - pip 24.0
 - Windows 10
