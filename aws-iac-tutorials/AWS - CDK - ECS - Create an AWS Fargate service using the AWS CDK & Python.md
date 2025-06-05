@@ -86,6 +86,10 @@ ecs_patterns.ApplicationLoadBalancedFargateService(self, "MyFargateService",
     public_load_balancer=True) # Default is True
 ```
 
+Official DOCS:
+- https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_ecs_patterns.ApplicationLoadBalancedFargateService.html
+- https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_ecs_patterns/ApplicationLoadBalancedFargateService.html
+
 Next, we validate our code by running the following to synthesize our stack:
 ```
 cdk synth
