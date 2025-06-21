@@ -114,6 +114,20 @@ cdk bootstrap aws://ACCOUNT-NUMBER/REGION
 cdk deploy
 ```
 
+>NOTES:
+>If you exec `aws bootstrape aws://ACCOUNT-NUMBER/REGION` command successfully, but  exec `cdk deploy` failed with error `MyEcsConstructStack: fail: Socket timed out without establishing a connection within 10000 ms`. 
+>Please take care proxy configuration for Node.js. 
+>For PowerShell:
+>`Get-ChildItem Env: | Where-Object { $_.Name -match "PROXY" }`
+>`$env:HTTP_PROXY="http://proxy.example.com:8080"`
+>`$env:HTTPS_PROXY="http://proxy.example.com:8080"`
+>For Node.js:
+>`npm config set proxy http://your.proxy:port`
+>`npm config set https-proxy http://your.proxy:port`
+
+
+
+
 ## Validate
 
 Check the output:
