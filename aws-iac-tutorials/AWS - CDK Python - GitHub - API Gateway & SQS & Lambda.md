@@ -37,7 +37,7 @@ At this point you can now synthesize the CloudFormation template for this code.
 cdk synth
 ```
 
-Configure your aws command line context if needed.
+Install & configure your aws command line tool if needed.
 ```
 pip install awscli
 ```
